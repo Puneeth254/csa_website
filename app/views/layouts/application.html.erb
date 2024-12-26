@@ -19,24 +19,107 @@
     <!-- In the <head> section for Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-      body{
+      body {
         background-image: url('https://t4.ftcdn.net/jpg/08/81/17/51/240_F_881175113_IGsJKVJe5lSMggHPDEwMLABC6W7J5Bep.jpg');
-        background-image: url('/BG3_enhanced.jpg');
+        background-image: url('/cseIITM.jpeg');
         background-size: cover;
+        background-attachment: scroll;
+        background-repeat: no-repeat;
+        background-position: center top;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Move the background up a little */
+      body::before {
+        content: "";
+        position: absolute;
+        top: -50px; /* Adjust this value to move background higher */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-image: inherit;
+        background-size: inherit;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .Navigation_bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for contrast */
+        color: white;
+      }
+
+      .Brand {
+        font-size: 80px;
+        font-family: Roboto, sans-serif;
+        font-weight: bold;
+        color: #FFD700; /* Gold color for CSA text */
+      }
+
+      .nav_link {
+        font-size: 24px;
+        margin-right: 20px;
+        font-family: Arial, sans-serif;
+        color: #87CEEB; /* Sky blue for links */
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .nav_link:hover {
+        color: #FFA07A; /* Light salmon color on hover */
+        text-decoration: underline;
+      }
+
+      footer {
+        background-color: #262626;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: auto;
+        font-family: Arial, sans-serif;
+      }
+
+      footer a {
+        color: #FFD700; /* Goldish links for better visibility */
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
 
   <body>
     <div class="Navigation_bar">
-      <div class="flex-row-start-center">
-        <div class="Brand" style="font-size: 100px; font-family: Roboto;">CSA</div>
-        <div class="nav_link">Events</div>
-        <div class="nav_link">Merch</div>
-        <div class="nav_link">Feedback</div>
+      <div class="Brand">CSA</div>
+      <div class="nav_links">
+        <a href="#" class="nav_link">Events</a>
+        <a href="#" class="nav_link">Merch</a>
+        <a href="#" class="nav_link">Feedback</a>
       </div>
     </div>
+
     <%= yield %>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2024 My Website. All rights reserved.</p>
+      <p>
+        <a href="/privacy-policy">Privacy Policy</a> |
+        <a href="/terms">Terms of Service</a> |
+        <a href="mailto:contact@mywebsite.com">Contact Us</a>
+      </p>
+    </footer>
+
     <!-- At the end of the <body> section for Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
