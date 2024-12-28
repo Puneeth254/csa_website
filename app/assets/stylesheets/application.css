@@ -19,6 +19,9 @@
 } */
 
 .Navigation_bar {
+    position: fixed;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +33,7 @@
 .Brand{
     color: white;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 60px;
     padding-left: 40px;
     font-family: Roboto;
     transition: color 1s ease;
@@ -40,8 +43,34 @@
     color: #FFD700;
 }
 
-.nav_link {
-    font-size: x-large;
+.Nav_dropdown{
+    display: none;
+}
+
+@media (max-width: 768px){
+    .Navigation_bar{
+        flex-direction: row-reverse;
+    }
+    .nav_links > *{
+        display: none;
+    }
+    .Nav_dropdown{
+        display: block;
+    }
+    .drop-down-off{
+        display: block;
+    }
+    .drop-down-on{
+        display: none;
+    }
+    .Brand{
+        padding-left: 10px;
+    }
+}
+
+.nav_link a{
+    font-size: 20px;
+    margin: 0px 4px;
     padding : 5px 20px;
     font-family: Roboto;
     color: white;
@@ -54,12 +83,10 @@
     transition: background-color 0.6s ease-in;
 }
 
-.nav_link:hover{
+.nav_link a:hover{
     text-decoration: none;
     color: black;
-    /* font-size: xx-large; */
     background-color: rgba(255, 255, 255, 2);
-    /* color: rgb(217, 242, 242); */
     border-color: rgb(0, 0, 0);
 }
 
@@ -68,7 +95,6 @@
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    width:max-content;
 }
 
 .flex-row-start-between{
@@ -79,9 +105,23 @@
     width:max-content;
 }
 
-.flex-row-start-center > *{
-    padding: 10px 40px 10px 40px;
-    color: white;
-    font-size: large;
-    /* background-color: black; */
+.flex-column-start-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.menu{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.menu > *{
+    margin-top: 5px;
+    padding: 3px;
 }

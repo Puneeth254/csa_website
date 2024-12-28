@@ -14,7 +14,7 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
     <!-- In the <head> section for Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -71,11 +71,27 @@
   <body>
     <div class="Navigation_bar">
       <div class="Brand">CSA</div>
-      <div class="nav_links">
-        <a href="#" class="nav_link">CS Trophy</a>
-        <a href="#" class="nav_link">Events</a>
-        <a href="#" class="nav_link">Merch</a>
-        <a href="#" class="nav_link">Feedback</a>
+      <div class="nav_links flex-row-start-center">
+        <div class="nav_link"><a href="#">CS Trophy</a></div>
+        <div class="nav_link"><a href="#">Events</a></div>
+        <div class="nav_link"><a href="#">Merch</a></div>
+        <div class="nav_link"><a href="#">Feedback</a></div>
+      </div>
+      <div class="Nav_dropdown">
+        <div class="drop-down-button">
+          <img class="drop-down-off" src="/three-dots-vertical.svg" height="30px">
+        </div>
+        <div>
+          <div class="drop-down-menu">
+            <div class="menu flex-column-start-center">
+              <div><img class="drop-down-on" src="/three-dots-horizontal.svg" height="30px"></div>
+              <div class="nav_link"><a href="#">CS Trophy</a></div>
+              <div class="nav_link"><a href="#">Events</a></div>
+              <div class="nav_link"><a href="#">Merch</a></div>
+              <div class="nav_link"><a href="#">Feedback</a></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -90,7 +106,26 @@
         <a href="mailto:contact@mywebsite.com">Contact Us</a>
       </p>
     </footer>
-
+    <script>
+      const ofb = document.querySelector('.drop-down-off');
+      const onb = document.querySelector('.drop-down-on');
+      const ddm = document.querySelector('.drop-down-menu');
+      const nb = document.querySelector('.Navigation_bar');
+      onb.style.display = 'none';
+      ddm.style.display = 'none';
+      ofb.addEventListener('click', function(){
+        ofb.style.display = 'none';
+        onb.style.display = 'block';
+        ddm.style.display = 'inline';
+        nb.style.background = 'none';
+      });
+      onb.addEventListener('click', function(){
+        onb.style.display = 'none';
+        ofb.style.display = 'block';
+        ddm.style.display = 'none';
+        nb.style.background = 'rgba(0, 0, 0, 0.5)';
+      });
+    </script>
     <!-- At the end of the <body> section for Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
