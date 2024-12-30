@@ -18,22 +18,76 @@
     background-color: black;
 } */
 
+.Navigation_bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px 10px 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for contrast */
+    color: white;
+}
+
 .Brand{
     color: white;
+    font-weight: bold;
+    font-size: 60px;
+    padding-left: 40px;
+    font-family: Roboto;
     transition: color 1s ease;
 }
 
 .Brand:hover{
-    color : aquamarine;
+    color: #FFD700;
 }
 
-.nav_link{
+.Nav_dropdown{
+    display: none;
+}
+
+@media (max-width: 768px){
+    .Navigation_bar{
+        flex-direction: row-reverse;
+    }
+    .nav_links > *{
+        display: none;
+    }
+    .Nav_dropdown{
+        display: block;
+    }
+    .drop-down-off{
+        display: block;
+    }
+    .drop-down-on{
+        display: none;
+    }
+    .Brand{
+        padding-left: 10px;
+    }
+}
+
+.nav_link a{
+    font-size: 20px;
+    margin: 0px 4px;
+    padding : 5px 20px;
+    font-family: Roboto;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
     border-bottom: 3px solid transparent;
+    transition: color 0.3s ease;
+    transition: font-size 0.3s ease;
+    transition: border-color 0.6s ease-in;
+    transition: background-color 0.6s ease-in;
 }
 
-.nav_link:hover{
-    color: rgb(145, 163, 163);
-    border-color: aqua;
+.nav_link a:hover{
+    text-decoration: none;
+    color: black;
+    background-color: rgba(255, 255, 255, 2);
+    border-color: rgb(0, 0, 0);
 }
 
 .flex-row-start-center{
@@ -41,7 +95,6 @@
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    width:max-content;
 }
 
 .flex-row-start-between{
@@ -52,9 +105,23 @@
     width:max-content;
 }
 
-.flex-row-start-center > *{
-    padding: 10px 40px 10px 40px;
-    color: white;
-    font-size: large;
-    /* background-color: black; */
+.flex-column-start-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.menu{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.menu > *{
+    margin-top: 5px;
+    padding: 3px;
 }
