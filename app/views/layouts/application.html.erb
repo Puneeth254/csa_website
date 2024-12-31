@@ -37,7 +37,7 @@
       body::before {
         content: "";
         position: absolute;
-        top: -50px; /* Adjust this value to move background higher */
+        top: -50px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -52,14 +52,20 @@
         background-color: #262626;
         color: white;
         text-align: center;
-        padding: 10px 0;
+        padding: 5px 0; /* Add small vertical padding and remove negative values */
         margin-top: auto;
         font-family: Arial, sans-serif;
+        font-size: 15px; /* Reduce font size to make footer more compact */
+        line-height: 0.75; /* Adjust line height for better spacing */
       }
 
       footer a {
         color: #FFD700; /* Goldish links for better visibility */
         text-decoration: none;
+      }
+
+      footer p {
+        margin-top: 10px;
       }
 
       footer a:hover {
@@ -70,12 +76,12 @@
 
   <body>
     <div class="Navigation_bar">
-      <div class="Brand">CSA</div>
+      <div class="Brand"><a href="<%= root_path %>">CSA</a></div>
       <div class="nav_links flex-row-start-center">
-        <div class="nav_link"><a href="#">CS Trophy</a></div>
-        <div class="nav_link"><a href="#">Events</a></div>
-        <div class="nav_link"><a href="#">Merch</a></div>
-        <div class="nav_link"><a href="#">Feedback</a></div>
+        <div class="nav_link"><a href="/cstrophy">CS Trophy</a></div>
+        <div class="nav_link"><a href="/events">Events</a></div>
+        <div class="nav_link"><a href="/merch">Merch</a></div>
+        <div class="nav_link"><a href="/feedback">Feedback</a></div>
       </div>
       <div class="Nav_dropdown">
         <div class="drop-down-button">
@@ -85,10 +91,10 @@
           <div class="drop-down-menu">
             <div class="menu flex-column-start-center">
               <div><img class="drop-down-on" src="/three-dots-horizontal.svg" height="30px"></div>
-              <div class="nav_link"><a href="#">CS Trophy</a></div>
-              <div class="nav_link"><a href="#">Events</a></div>
-              <div class="nav_link"><a href="#">Merch</a></div>
-              <div class="nav_link"><a href="#">Feedback</a></div>
+              <div class="nav_link"><a href="/cstrophy">CS Trophy</a></div>
+              <div class="nav_link"><a href="/events">Events</a></div>
+              <div class="nav_link"><a href="/merch">Merch</a></div>
+              <div class="nav_link"><a href="/feedback">Feedback</a></div>
             </div>
           </div>
         </div>

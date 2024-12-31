@@ -30,17 +30,19 @@
     color: white;
 }
 
-.Brand{
+.Brand a {
     color: white;
     font-weight: bold;
     font-size: 60px;
     padding-left: 40px;
     font-family: Roboto;
-    transition: color 1s ease;
+    transition: color 0.6s ease;
+    text-decoration: none;
 }
 
-.Brand:hover{
+.Brand a:hover {
     color: #FFD700;
+    text-decoration: none;
 }
 
 .Nav_dropdown{
@@ -125,3 +127,86 @@
     margin-top: 5px;
     padding: 3px;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-row-gap: 30px; /* Space between the headings and events */
+    justify-items: center; /* Center-align items horizontally */
+    margin-top: 110px; /* Top margin for the container */
+    text-align: center; /* Center-align text inside headings and events */
+}
+
+.heading {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(153, 255, 100);
+    margin-bottom: 10px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
+    max-height: 500px; /* Set max height for the column */
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    width: 350px;
+}
+
+.event-box {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%; /* Adjust the width of the event boxes */
+    text-align: center; /* Center-align text inside event boxes */
+    margin-bottom: 10px;
+}
+
+.event-box.event-1 {
+    grid-column: 1; /* Places this event in the 1st column */
+}
+
+.event-box.event-2 {
+    grid-column: 2; /* Places this event in the 2nd column */
+}
+
+.event-box.event-3 {
+    grid-column: 3; /* Places this event in the 3rd column */
+}
+
+.event-box h2 {
+    margin: 0 0 10px; /* Space between heading and time */
+    font-size: 1.5em; /* Event name font size */
+    color: #333; /* Dark text color */
+}
+
+.event-box p {
+    margin: 0 0 15px; /* Space below time */
+    font-size: 1em; /* Time font size */
+    color: #666; /* Subtle text color for time */
+}
+
+.event-box button {
+    background-color: #007bff; /* Button color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners for button */
+    padding: 10px 20px; /* Button padding */
+    font-size: 1em; /* Button font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.event-box button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.event-box:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}  
