@@ -51,72 +51,53 @@
   <body>
 
     <div class="container">
-    <!-- Column 1 -->
-        <div class="column">
-            <div class="heading">Upcoming Events</div>
-            <div class="event-box">
-                <h2>Event Name 1</h2>
-                <p>Time: 10:00 AM</p>
-                <button>Register</button>
-            </div>
-            <div class="event-box">
-                <h2>Event Name 2</h2>
-                <p>Time: 10:30 AM</p>
-                <button>Register</button>
-            </div>
-            <div class="event-box">
-                <h2>Event Name 2</h2>
-                <p>Time: 10:30 AM</p>
-                <button>Register</button>
-            </div>
-            <div class="event-box">
-                <h2>Event Name 2</h2>
-                <p>Time: 10:30 AM</p>
-                <button>Register</button>
-            </div>
-            <div class="event-box">
-                <h2>Event Name 2</h2>
-                <p>Time: 10:30 AM</p>
-                <button>Register</button>
-            </div>
-            <!-- Add more events as needed -->
-        </div>
-
-        <!-- Column 2 -->
-        <div class="column">
-            <div class="heading">Completed Events</div>
-            <div class="event-box">
-                <h2>Event Name 3</h2>
-                <p>Time: 11:00 AM</p>
-                <button>Register</button>
-            </div>
-            <div class="event-box">
-                <h2>Event Name 4</h2>
-                <p>Time: 11:30 AM</p>
-                <button>Register</button>
-            </div>
-            <!-- Add more events as needed -->
-        </div>
-
-        <!-- Column 3 -->
-        <div class="column">
-            <div class="heading">Ongoing Events</div>
-            <div class="event-box">
-                <h2>Event Name 5</h2>
-                <p>Time: 12:00 PM</p>
-                <button>Register</button>
-            </div>
-            <div class="event-box">
-                <h2>Event Name 6</h2>
-                <p>Time: 12:30 PM</p>
-                <button>Register</button>
-            </div>
-            <!-- Add more events as needed -->
-        </div>
+      <div class="column" id="upcoming-events">
+        <div class="heading">Upcoming Events</div>
+      </div>
+      <div class="column" id="completed-events">
+        <div class="heading">Completed Events</div>
+      </div>
+      <div class="column" id="ongoing-events">
+        <div class="heading">Ongoing Events</div>
+      </div>
     </div>
 
 
+     <script>
 
+      const events = [
+        { name: "Event Name 1", time: "2024-12-30T10:00:00" },
+        { name: "Event Name 2", time: "2024-12-30T12:00:00" },
+        { name: "Event Name 3", time: "2024-12-29T11:00:00" },
+        { name: "Event Name 4", time: "2024-12-31T14:00:00" },
+        { name: "Event Name 5", time: "2024-12-30T13:00:00" },
+        { name: "Event Name 6", time: "2024-12-28T09:00:00" },
+      ];
+
+      const now = new Date();
+
+      events.forEach((event) => {
+        const eventTime = new Date(event.time);
+        const eventBox = document.createElement("div");
+        eventBox.classList.add("event-box");
+        eventBox.innerHTML = `
+          <h2>${event.name}</h2>
+          <p>${eventTime.toLocaleString()}</p>
+          <button>Register</button>
+        `;
+
+        if (eventTime > now) {
+          document.getElementById("upcoming-events").appendChild(eventBox);
+        } else if (
+          eventTime.toDateString() === now.toDateString() &&
+          eventTime <= now
+        ) {
+          document.getElementById("ongoing-events").appendChild(eventBox);
+        } else {
+          document.getElementById("completed-events").appendChild(eventBox);
+        }
+      });
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

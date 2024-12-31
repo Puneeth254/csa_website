@@ -138,23 +138,34 @@
 }
 
 .heading {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
-    color: rgb(153, 255, 100);
+    color: rgb(130, 238, 71);
     margin-bottom: 10px;
+    font-family: 'Arial Black', sans-serif;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 10px 14px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
+
 
 .column {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: auto; /* Enable vertical scroll if content overflows */
-    max-height: 500px; /* Set max height for the column */
+    max-height: 550px; /* Set max height for the column */
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.1);
-    width: 350px;
+    width: 360px;
 }
 
 .event-box {
@@ -192,21 +203,21 @@
 }
 
 .event-box button {
-    background-color: #007bff; /* Button color */
-    color: white; /* Button text color */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners for button */
-    padding: 10px 20px; /* Button padding */
-    font-size: 1em; /* Button font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .event-box button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #0056b3;
 }
 
 .event-box:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    transition: transform 0.3s ease; /* Smooth hover effect */
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
 }  

@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get "cstrophy" => "pages#cstrophy"
   get "merch" => "pages#merch"
   get "feedback" => "pages#feedback"
+  get "home" => "pages#home"
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "pages#home"
+  root "pages#login"
 end

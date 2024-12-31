@@ -51,37 +51,48 @@
       footer {
         background-color: #262626;
         color: white;
-        text-align: center;
-        padding: 5px 0; /* Add small vertical padding and remove negative values */
-        margin-top: auto;
+        padding: 10px 20px;
         font-family: Arial, sans-serif;
-        font-size: 15px; /* Reduce font size to make footer more compact */
-        line-height: 0.75; /* Adjust line height for better spacing */
+        font-size: 14px;
+        line-height: 3;
+        margin-top: auto;
       }
 
-      footer a {
-        color: #FFD700; /* Goldish links for better visibility */
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-left {
+        margin: 0;
+      }
+
+      .footer-right {
+        margin: 0;
+      }
+
+      .footer-right a {
+        color: #FFD700; /* Goldish color for links */
         text-decoration: none;
       }
 
-      footer p {
-        margin-top: 10px;
-      }
-
-      footer a:hover {
+      .footer-right a:hover {
         text-decoration: underline;
       }
+
     </style>
   </head>
 
   <body>
-    <div class="Navigation_bar">
-      <div class="Brand"><a href="<%= root_path %>">CSA</a></div>
+    <div class="Navigation_bar" style="display: <%= controller.action_name == "login" ? 'none' : 'flex' %>;">
+      <div class="Brand"><a href="/home">CSA</a></div>
       <div class="nav_links flex-row-start-center">
         <div class="nav_link"><a href="/cstrophy">CS Trophy</a></div>
         <div class="nav_link"><a href="/events">Events</a></div>
         <div class="nav_link"><a href="/merch">Merch</a></div>
         <div class="nav_link"><a href="/feedback">Feedback</a></div>
+        <div class="nav_link"><a href="<%=root_path%>">Logout</a></div>
       </div>
       <div class="Nav_dropdown">
         <div class="drop-down-button">
@@ -105,13 +116,16 @@
 
     <!-- Footer Section -->
     <footer>
-      <p>&copy; 2024 My Website. All rights reserved.</p>
-      <p>
-        <a href="/privacy-policy">Privacy Policy</a> |
-        <a href="/terms">Terms of Service</a> |
-        <a href="mailto:contact@mywebsite.com">Contact Us</a>
-      </p>
+      <div class="footer-container">
+        <p class="footer-left">&copy; 2024 My Website. All rights reserved.</p>
+        <p class="footer-right">
+          <a href="/privacy-policy">Privacy Policy</a> |
+          <a href="/terms">Terms of Service</a> |
+          <a href="mailto:contact@mywebsite.com">Contact Us</a>
+        </p>
+      </div>
     </footer>
+
     <script>
       const ofb = document.querySelector('.drop-down-off');
       const onb = document.querySelector('.drop-down-on');
