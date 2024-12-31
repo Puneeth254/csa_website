@@ -64,6 +64,7 @@
         display: none;
     }
     .Brand{
+        font-size: 40px;
         padding-left: 10px;
     }
 }
