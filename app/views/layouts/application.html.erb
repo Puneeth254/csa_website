@@ -19,6 +19,35 @@
     <!-- In the <head> section for Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+      body {
+        background-image: url('https://t4.ftcdn.net/jpg/08/81/17/51/240_F_881175113_IGsJKVJe5lSMggHPDEwMLABC6W7J5Bep.jpg');
+        background-image: url('/cseIITM.jpeg');
+        background-size: cover;
+        background-attachment: scroll;
+        background-repeat: no-repeat;
+        background-position: center top;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Move the background up a little */
+      body::before {
+        content: "";
+        position: absolute;
+        top: -50px; /* Adjust this value to move background higher */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-image: inherit;
+        background-size: inherit;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
       footer {
         position: fixed;
         background-color: #262626;
@@ -68,9 +97,9 @@
         </div>
       </div>
     </div>
-
-    <%= yield %>
-
+    <div style="margin-top:100px;">
+      <%= yield %>
+    <div>
     <!-- Footer Section -->
     <footer>
       <div class="footer-container">
