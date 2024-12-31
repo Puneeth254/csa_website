@@ -1,9 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-</body>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Csa Website" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <style>
+      body {
+        background-image: url('https://t4.ftcdn.net/jpg/08/81/17/51/240_F_881175113_IGsJKVJe5lSMggHPDEwMLABC6W7J5Bep.jpg');
+        background-image: url('/cseIITM.jpeg');
+        background-size: cover;
+        background-attachment: scroll;
+        background-repeat: no-repeat;
+        background-position: center top;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Move the background up a little */
+      body::before {
+        content: "";
+        position: absolute;
+        top: -50px; /* Adjust this value to move background higher */
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-image: inherit;
+        background-size: inherit;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
 </html>
