@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="about-us-box">
+        <div class="about-us-content">
+          <div class="about-us-text">
+            <h2>About CSA</h2>
+            <p>
+              CSA (Computer Science Association) is dedicated to fostering a community of passionate students in the field of Computer Science. We aim to provide opportunities for students to enhance their knowledge, develop new skills, and collaborate on exciting projects and events.
+            </p>
+            <p>
+              Our mission is to organize events, workshops, and hackathons to inspire innovation and learning within the computer science community.
+            </p>
+          </div>
+          <div class="about-us-images">
+            <div class="carousel">
+              <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+              <div class="image-container">
+                <img src="/BG.jpg" alt="CSA Event" class="carousel-image">
+                <img src="/logo.jpeg" alt="CSA Community" class="carousel-image">
+                <img src="/BG2.jpeg" alt="CSA Workshop" class="carousel-image">
+              </div>
+              <button class="next" onclick="changeImage(1)">&#10095;</button>
+            </div>
+          </div>
+        </div>
+    </div>
 
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll(".carousel-image");
+
+        function updateCarousel() {
+        images.forEach((img, index) => {
+            img.classList.toggle("active", index === currentIndex);
+        });
+        }
+
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateCarousel();
+        }
+
+        updateCarousel();
+    </script>
+</body>
+</html>

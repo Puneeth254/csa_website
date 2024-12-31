@@ -222,3 +222,95 @@
     transform: translateY(-5px);
     transition: transform 0.3s ease;
 }  
+
+/* About Us Section */
+.about-us-box {
+    width: 100%; /* Full width of the screen */
+    background-color: #333; /* Greyish-black background */
+    color: white; /* Text color */
+    padding: 40px 0; /* Space around content */
+    box-sizing: border-box;
+    margin-top :700px;
+  }
+  
+  .about-us-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .about-us-text {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .about-us-text h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  
+  .about-us-images {
+    flex: 1;
+    position: relative;
+  }
+  
+  /* Carousel Styling */
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .image-container {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .carousel-image {
+    margin-left: 100px;
+    width: 500px;
+    height: 300px;
+    object-fit: fill;
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+  }
+  
+  .carousel-image.active {
+    display: block;
+  }
+  
+  .carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px;
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%; /* Optional: makes buttons circular */
+  }
+  
+  .carousel .prev {
+    left: 100px; /* Position for previous button */
+  }
+  
+  .carousel .next {
+    right: 0px; /* Position for next button */
+  }
+  
+  
+  
+  
