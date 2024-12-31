@@ -41,6 +41,7 @@
 
 .Brand:hover{
     color: #FFD700;
+    text-decoration: none;
 }
 
 .Nav_dropdown{
