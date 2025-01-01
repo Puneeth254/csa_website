@@ -28,6 +28,7 @@
     padding: 0px 10px 10px 10px;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for contrast */
     color: white;
+    z-index: 100;
 }
 
 .Brand a {
@@ -449,14 +450,15 @@
 }
 
 .events_table{
-    /* background-color: white;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    width: 50em; */
     width: max-content;
     overflow-x: auto;
     flex-shrink: 0;
+    /* animation: scroll 30s linear infinite alternate; */
 }
+
+/* .events_container:active .events_table {
+    animation-play-state: paused;
+} */
 
 .page_margin{
     margin: 100px;
@@ -470,6 +472,15 @@
     border-radius: 10px;
     height: 200px;
     width: 300px;
+}
+
+@media (min-width: 768px){
+    .event_box:hover{
+        margin: 0px;
+        padding: 18px;
+        height: 220px;
+        width: 320px;
+    }
 }
 
 .event_name{
@@ -494,6 +505,15 @@
     background: linear-gradient(30deg, #4E65FF, #92EFFD);
     background-size: 180% 180%;
     animation: gradient-animation 7s ease infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0); /* Start at the initial position */
+    }
+    100% {
+        transform: translateX(-100%); /* Move left by the width of one item */
+    }
 }
 
 @keyframes gradient-animation{
