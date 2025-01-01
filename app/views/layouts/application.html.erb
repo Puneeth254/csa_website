@@ -22,7 +22,6 @@
       body {
         background-image: url('/cseIITM.jpeg');
         background-size: cover;
-        background-attachment: scroll;
         background-repeat: no-repeat;
         background-position: center top;
         margin: 0;
@@ -48,14 +47,27 @@
       }
 
       footer {
-        position: fixed;
         background-color: #262626;
         color: white;
         padding: 10px 20px;
         font-family: Arial, sans-serif;
-        bottom: 0px;
-        right: 0px;
-        left: 0px;
+        font-size: 14px;
+        line-height: 3;
+        margin-top: auto;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-left {
+        margin: 0;
+      }
+
+      .footer-right {
+        margin: 0;
       }
 
       .footer-right a {
@@ -72,9 +84,9 @@
 
   <body>
     <div class="Navigation_bar">
-      <div><%= link_to "CSA", root_path , class: "Brand"%></div>
+      <div class="Brand"><%= link_to "CSA", root_path %></div>
       <div class="nav_links flex-row-start-center">
-        <div class="nav_link"><%= link_to "CS Trophy", root_path %></div>
+        <div class="nav_link"><%= link_to "CS Trophy", cstrophy_path %></div>
         <div class="nav_link"><%= link_to "Events", events_path %></div>
         <div class="nav_link"><%= link_to "Merch", root_path %></div>
         <div class="nav_link"><%= link_to "Feedback", root_path %></div>
@@ -96,9 +108,9 @@
         </div>
       </div>
     </div>
-    <div style="margin-top:100px;">
-      <%= yield %>
-    <div>
+
+    <%= yield %>
+    
     <!-- Footer Section -->
     <footer>
       <div class="footer-container">
