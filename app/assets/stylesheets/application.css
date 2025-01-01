@@ -99,14 +99,6 @@
     align-items: center;
 }
 
-.flex-row-start-between{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width:max-content;
-}
-
 .flex-column-start-center{
     display: flex;
     flex-direction: column;
@@ -389,3 +381,129 @@
     color: #333;
 }
 
+
+.flex-row-center-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row-space-between-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-row-space-around-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-row-space-evenly-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.flex-column-space-evenly-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.events_table{
+    /* background-color: white;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 50em; */
+    width: max-content;
+    overflow-x: auto;
+    flex-shrink: 0;
+}
+
+.page_margin{
+    margin: 100px;
+}
+
+.event_box{
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 200px;
+    width: 300px;
+}
+
+.event_name{
+    font-family: Roboto;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.upcoming_events > *{
+    background: linear-gradient(30deg, #93A5CF, #E4EfE9);
+    background-size: 180% 180%;
+    animation: gradient-animation 7s ease infinite;
+}
+
+.current_events > *{
+    background: linear-gradient(30deg, #A1C4FD, #C2E9FB);
+    background-size: 180% 180%;
+    animation: gradient-animation 7s ease infinite;
+}
+
+.completed_events > *{
+    background: linear-gradient(30deg, #4E65FF, #92EFFD);
+    background-size: 180% 180%;
+    animation: gradient-animation 7s ease infinite;
+}
+
+@keyframes gradient-animation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+@media (max-width: 768px){
+    .Navigation_bar{
+        flex-direction: row-reverse;
+    }
+    .nav_links > *{
+        display: none;
+    }
+    .Nav_dropdown{
+        display: block;
+    }
+    .drop-down-off{
+        display: block;
+    }
+    .drop-down-on{
+        display: none;
+    }
+    .Brand{
+        font-size: 40px;
+        padding-left: 10px;
+    }
+    .page_margin{
+        margin: 0px;
+        margin-top: 70px;
+    }
+    .event_box{
+        font-size: smaller;
+        height: 150px;
+        width: 300px;
+    }
+}

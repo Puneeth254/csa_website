@@ -22,20 +22,26 @@
       body {
         background-image: url('/cseIITM.jpeg');
         background-size: cover;
+        background-attachment: fixed;
         background-repeat: no-repeat;
-        background-position: center top;
+        background-position: center top -100px;
         margin: 0;
         padding: 0;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
       }
+      @media (max-width: 768px){
+        body{
+          background-position: center top;
+        }
+      }
 
       /* Move the background up a little */
-      body::before {
+      /* body::before {
         content: "";
         position: absolute;
-        top: -50px; /* Adjust this value to move background higher */
+        top: -50px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -44,7 +50,7 @@
         background-size: inherit;
         background-position: center;
         background-repeat: no-repeat;
-      }
+      } */
 
       footer {
         background-color: #262626;
@@ -108,9 +114,9 @@
         </div>
       </div>
     </div>
-
-    <%= yield %>
-    
+    <div class="page_margin">
+      <%= yield %>
+    </div>
     <!-- Footer Section -->
     <footer>
       <div class="footer-container">
@@ -145,8 +151,11 @@
 
     </script>
     <!-- At the end of the <body> section for Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
   </body>
 </html>
