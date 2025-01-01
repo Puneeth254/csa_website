@@ -7,6 +7,11 @@
 </head>
 <body>
     <div class="about-us-box">
+
+        <div class="about-us-arrow">
+            <span class="arrow"></span>
+        </div>
+
         <div class="about-us-content">
           <div class="about-us-text">
             <h2>About CSA</h2>
@@ -19,13 +24,13 @@
           </div>
           <div class="about-us-images">
             <div class="carousel">
-              <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+              <button class="carousel-button prev" onclick="changeImages(-1)">&#10094;</button>
               <div class="image-container">
                 <img src="/BG.jpg" alt="CSA Event" class="carousel-image">
                 <img src="/logo.jpeg" alt="CSA Community" class="carousel-image">
                 <img src="/BG2.jpeg" alt="CSA Workshop" class="carousel-image">
               </div>
-              <button class="next" onclick="changeImage(1)">&#10095;</button>
+              <button class="carousel-button next" onclick="changeImages(1)">&#10095;</button>
             </div>
           </div>
         </div>
@@ -35,94 +40,125 @@
         </div>
 
 
-        <div class="team-section">
-            <h4>Secretaries</h4>
-            <div class="team-row">
-                <div class="team-card">
-                    <img src="/path/to/image1.jpg" alt="Person 1">
-                    <h5>Shaun</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +123-456-7890</p>
+        <div class="team-carousel">
+            <button class="carousel-btn prev" onclick="changeTeamSlide(-1)">&#10094;</button>
+            <div class="carousel-slides">
+                <div class="team-section">
+                    <h4>Secretaries</h4>
+                    <div class="team-row">
+                        <div class="team-card">
+                            <img src="/path/to/image1.jpg" alt="Person 1">
+                            <h5>Shaun</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +123-456-7890</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="/path/to/image2.jpg" alt="Person 2">
+                            <h5>Karthikeya</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +987-654-3210</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-card">
-                    <img src="/path/to/image2.jpg" alt="Person 2">
-                    <h5>Karthikeya</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +987-654-3210</p>
+                <div class="team-section">
+                    <h4>WebOps</h4>
+                    <div class="team-row">
+                        <div class="team-card">
+                            <img src="/path/to/image1.jpg" alt="Person 1">
+                            <h5>Imthiyash</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +123-456-7890</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="/cseIITM.jpeg" alt="Person 2">
+                            <h5>Puneeth</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +987-654-3210</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Add more team members as needed -->
+                <div class="team-section">
+                    <h4>Events</h4>
+                    <div class="team-row">
+                        <div class="team-card">
+                            <img src="/path/to/image3.jpg" alt="Person 3">
+                            <h5>Meghana</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +111-222-3333</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="/path/to/image4.jpg" alt="Person 4">
+                            <h5>Ujjayan</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +444-555-6666</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-section">
+                    <h4>Media and Design</h4>
+                    <div class="team-row">
+                        <div class="team-card">
+                            <img src="/path/to/image5.jpg" alt="Person 5">
+                            <h5>Sushanth</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +777-888-9999</p>
+                        </div>
+                        <div class="team-card">
+                            <img src="/path/to/image6.jpg" alt="Person 6">
+                            <h5>Himakar</h5>
+                            <p><i class="fas fa-phone fa-flip-horizontal"></i> +000-111-2222</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <button class="carousel-btn next" onclick="changeTeamSlide(1)">&#10095;</button>
         </div>
 
-        <div class="team-section">
-            <h4>WebOps</h4>
-            <div class="team-row">
-                <div class="team-card">
-                    <img src="/path/to/image1.jpg" alt="Person 1">
-                    <h5>Imthiyash</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +123-456-7890</p>
-                </div>
-                <div class="team-card">
-                    <img src="/path/to/image2.jpg" alt="Person 2">
-                    <h5>Puneeth</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +987-654-3210</p>
-                </div>
-                <!-- Add more team members as needed -->
-            </div>
-        </div>
-
-        <div class="team-section">
-            <h4>Events</h4>
-            <div class="team-row">
-                <div class="team-card">
-                    <img src="/path/to/image3.jpg" alt="Person 3">
-                    <h5>Meghana</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +111-222-3333</p>
-                </div>
-                <div class="team-card">
-                    <img src="/path/to/image4.jpg" alt="Person 4">
-                    <h5>Ujjayan</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +444-555-6666</p>
-                </div>
-                <!-- Add more team members as needed -->
-            </div>
-        </div>
-
-        <div class="team-section">
-            <h4>Media and Design</h4>
-            <div class="team-row">
-                <div class="team-card">
-                    <img src="/path/to/image5.jpg" alt="Person 5">
-                    <h5>Sushanth</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +777-888-9999</p>
-                </div>
-                <div class="team-card">
-                    <img src="/path/to/image6.jpg" alt="Person 6">
-                    <h5>Himakar</h5>
-                    <p><i class="fas fa-phone fa-flip-horizontal"></i> +000-111-2222</p>
-                </div>
-                <!-- Add more team members as needed -->
-            </div>
-        </div>
 
 
     </div>
 
 
     <script>
-        let currentIndex = 0;
-        const images = document.querySelectorAll(".carousel-image");
 
-        function updateCarousel() {
-        images.forEach((img, index) => {
-            img.classList.toggle("active", index === currentIndex);
-        });
+        let currentImage = 0;
+
+        function changeImages(direction) {
+            const Images = document.querySelector(".image-container");
+            const totalImages = Images.children.length;
+
+            currentImage = (currentImage + direction + totalImages) % totalImages;
+
+            Images.style.transform = `translateX(-${currentImage * 100}%)`;
         }
 
-        function changeImage(direction) {
-            currentIndex = (currentIndex + direction + images.length) % images.length;
-            updateCarousel();
+        setInterval(() => {
+            changeImages(1);
+        }, 3000);
+
+
+        let currentSlide = 0;
+
+        function changeTeamSlide(direction) {
+            const slides = document.querySelector(".carousel-slides");
+            const totalSlides = slides.children.length;
+
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        updateCarousel();
+        setInterval(() => {
+            changeTeamSlide(1);
+        }, 3000);
+
+
+
+        // const carousel = document.querySelector(".team-carousel");
+
+        // carousel.addEventListener("mouseenter", () => {
+        //     clearInterval(autoSlide);
+        // });
+
+        // carousel.addEventListener("mouseleave", () => {
+        //     autoSlide = setInterval(() => {
+        //         changeTeamSlide(1);
+        //     }, 3000);
+        // });
+
     </script>
 </body>
 </html>

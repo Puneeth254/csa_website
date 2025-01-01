@@ -160,76 +160,58 @@
     width: 360px;
 }
 
-.event-box {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 80%; /* Adjust the width of the event boxes */
-    text-align: center; /* Center-align text inside event boxes */
-    margin-bottom: 10px;
-}
-
-.event-box.event-1 {
-    grid-column: 1; /* Places this event in the 1st column */
-}
-
-.event-box.event-2 {
-    grid-column: 2; /* Places this event in the 2nd column */
-}
-
-.event-box.event-3 {
-    grid-column: 3; /* Places this event in the 3rd column */
-}
-
-.event-box h2 {
-    margin: 0 0 10px; /* Space between heading and time */
-    font-size: 1.5em; /* Event name font size */
-    color: #333; /* Dark text color */
-}
-
-.event-box p {
-    margin: 0 0 15px; /* Space below time */
-    font-size: 1em; /* Time font size */
-    color: #666; /* Subtle text color for time */
-}
-
-.event-box button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.event-box button:hover {
-    background-color: #0056b3;
-}
-
-.event-box:hover {
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
-} 
-
 /* About Us Section */
 .about-us-box {
-    width: 100%; /* Full width of the screen */
+    width: 100%;
     background-color: #333; /* Greyish-black background */
     color: white; /* Text color */
     padding: 40px 0; /* Space around content */
     box-sizing: border-box;
-    margin-top :700px;
+    margin-top :590px;
 }
+
+.about-us-arrow {
+    position: relative;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.about-us-arrow .arrow {
+    display: block;
+    width: 30px; /* Width of the arrow */
+    height: 30px; /* Height of the arrow */
+    border-left: 7px solid white; /* Thickness and color of the arrow */
+    border-bottom: 7px solid white;
+    transform: rotate(-45deg);
+    margin: 5px auto;
+    animation: bounce 1.5s infinite;
+}
+
+.about-us-arrow .arrow:nth-child(2) {
+    animation-delay: 0.3s; /* Slight delay for the second arrow */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: rotate(-45deg) translateY(0);
+    }
+    40% {
+        transform: rotate(-45deg) translateY(10px);
+    }
+    60% {
+        transform: rotate(-45deg) translateY(5px);
+    }
+}
+
   
 .about-us-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1400px;
-    margin: 0 auto;
+    margin-left: 20px;
     padding: 20px;
 }
 
@@ -256,66 +238,68 @@
 /* Carousel Styling */
 .carousel {
     position: relative;
-    width: 100%;
-    max-width: 600px;
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Fixed maximum width for the carousel */
+    height: 300px; /* Fixed height for the carousel */
     margin: 0 auto;
     overflow: hidden;
+    background-color: #000; /* Optional: black background for visual appeal */
 }
 
 .image-container {
     display: flex;
     transition: transform 0.5s ease;
+    width: 100%; /* Ensure the container spans the width of the carousel */
 }
 
 .carousel-image {
-    margin-left: 100px;
-    width: 500px;
-    height: 300px;
-    object-fit: fill;
-    transition: opacity 0.5s ease-in-out;
-    display: none;
+    flex-shrink: 0;
+    width: 100%; /* Match the width of the carousel */
+    height: 100%; /* Match the height of the carousel */
+    object-fit: cover; /* Cover the carousel dimensions, cropping as needed */
 }
 
-.carousel-image.active {
-    display: block;
-}
 
-.carousel button {
+.carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 5px;
+    padding: 10px;
     font-size: 10px;
     cursor: pointer;
     z-index: 10;
-    border-radius: 50%; /* Optional: makes buttons circular */
 }
 
-.carousel .prev {
-    left: 100px; /* Position for previous button */
+.carousel-button.prev {
+    left: 0px; /* Position for previous button */
 }
 
-.carousel .next {
+.carousel-button.next {
     right: 0px; /* Position for next button */
 }
 
-/* Heading styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .team-heading {
     text-align: center;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .team-heading h3 {
     margin-top: 100px;
     font-size: 60px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Pacifico', cursive; /* Stylish font */
     color: white;
-    text-decoration: underline;
+    display: inline-block; /* Ensures the text stays in one line */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Hides the overflow text */
 }
+
 
 .team-section {
     padding: 20px;
@@ -324,21 +308,21 @@
 .team-section h4 {
     font-size: 40px;
     color: #ecdfdf;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .team-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 50px;
     justify-content: center;
     margin-bottom: 30px;
 }
 
 .team-card {
     text-align: center;
-    width: 150px;
+    width: 400px;
     padding: 10px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -353,9 +337,9 @@
 
 .team-card img {
     width: 100%;
-    height: 150px;
+    height: 300px;
     object-fit: cover;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     margin-bottom: 10px;
 }
 
@@ -380,6 +364,53 @@
     font-size: 10px;
     color: #333;
 }
+
+
+.team-carousel {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.team-section {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 10px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 
 
 .flex-row-center-center{
