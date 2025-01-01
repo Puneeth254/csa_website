@@ -162,6 +162,7 @@
 @media (min-width: 768px){
     .event_box:hover{
         margin: 0px;
+        padding: 18px;
         height: 220px;
         width: 320px;
     }
