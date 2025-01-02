@@ -28,6 +28,7 @@
     padding: 0px 10px 10px 10px;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for contrast */
     color: white;
+    z-index: 100;
 }
 
 .Brand{
@@ -46,6 +47,168 @@
 
 .Nav_dropdown{
     display: none;
+}
+
+.nav_link a{
+    font-size: 20px;
+    margin: 0px 4px;
+    padding : 5px 20px;
+    font-family: Roboto;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, font-size 0.3s ease, border-color 0.1s ease-in, background-color 0.6s ease-in;
+}
+
+.nav_link a:hover{
+    text-decoration: none;
+    color: black;
+    background-color: rgba(255, 255, 255, 2);
+    border-color: rgb(0, 0, 0);
+}
+
+.flex-row-start-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.flex-column-start-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.menu{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.menu > *{
+    margin-top: 5px;
+    padding: 3px;
+}
+
+.flex-row-center-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row-space-between-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-row-space-around-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-row-space-evenly-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.flex-column-space-evenly-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.events_table{
+    width: max-content;
+    overflow-x: auto;
+    flex-shrink: 0;
+    /* animation: scroll 30s linear infinite alternate; */
+}
+
+/* .events_container:active .events_table {
+    animation-play-state: paused;
+} */
+
+.page_margin{
+    margin: 100px;
+}
+
+.event_box{
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    height: 200px;
+    width: 300px;
+    transition: margin 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+@media (min-width: 768px){
+    .event_box:hover{
+        margin: 0px;
+        padding: 18px;
+        height: 220px;
+        width: 320px;
+    }
+}
+
+.event_name{
+    font-family: Roboto;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.upcoming_events > *{
+    background: linear-gradient(30deg, #93A5CF, #E4EfE9);
+    background-size: 180% 180%;
+    animation: gradient-animation 7s ease infinite;
+}
+
+.current_events > *{
+    background: linear-gradient(30deg, #A1C4FD, #C2E9FB);
+    background-size: 180% 180%;
+    animation: gradient-animation 7s ease infinite;
+}
+
+.completed_events > *{
+    background: linear-gradient(30deg, #4E65FF, #92EFFD);
+    background-size: 180% 180%;
+    animation: gradient-animation 7s ease infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0); /* Start at the initial position */
+    }
+    100% {
+        transform: translateX(-100%); /* Move left by the width of one item */
+    }
+}
+
+@keyframes gradient-animation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
 }
 
 @media (max-width: 768px){
@@ -68,62 +231,13 @@
         font-size: 40px;
         padding-left: 10px;
     }
-}
-
-.nav_link a{
-    font-size: 20px;
-    margin: 0px 4px;
-    padding : 5px 20px;
-    font-family: Roboto;
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    border-bottom: 3px solid transparent;
-    transition: color 0.3s ease;
-    transition: font-size 0.3s ease;
-    transition: border-color 0.6s ease-in;
-    transition: background-color 0.6s ease-in;
-}
-
-.nav_link a:hover{
-    text-decoration: none;
-    color: black;
-    background-color: rgba(255, 255, 255, 2);
-    border-color: rgb(0, 0, 0);
-}
-
-.flex-row-start-center{
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-}
-
-.flex-row-start-between{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width:max-content;
-}
-
-.flex-column-start-center{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-}
-
-.menu{
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0%;
-    left: 0;
-    right: 0;
-    z-index: 10;
-}
-
-.menu > *{
-    margin-top: 5px;
-    padding: 3px;
+    .page_margin{
+        margin: 0px;
+        margin-top: 70px;
+    }
+    .event_box{
+        font-size: smaller;
+        height: 150px;
+        width: 300px;
+    }
 }
