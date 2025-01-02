@@ -58,10 +58,7 @@
     text-decoration: none;
     border-radius: 10px;
     border-bottom: 3px solid transparent;
-    transition: color 0.3s ease;
-    transition: font-size 0.3s ease;
-    transition: border-color 0.6s ease-in;
-    transition: background-color 0.6s ease-in;
+    transition: color 0.3s ease, font-size 0.3s ease, border-color 0.1s ease-in, background-color 0.6s ease-in;
 }
 
 .nav_link a:hover{
@@ -157,6 +154,7 @@
     border-radius: 10px;
     height: 200px;
     width: 300px;
+    transition: margin 0.3s ease, width 0.3s ease, height 0.3s ease;
 }
 
 @media (min-width: 768px){
