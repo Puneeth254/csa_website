@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  customer_name: MyString
+  quantity: 1
+  sale_date: 2025-01-04
+
+two:
+  product: two
+  customer_name: MyString
+  quantity: 1
+  sale_date: 2025-01-04

@@ -166,6 +166,7 @@
 
 
         let currentSlide = 0;
+        let autoSlide; // Declare autoSlide in the global scope
 
         function changeTeamSlide(direction) {
             const slides = document.querySelector(".carousel-slides");
@@ -176,23 +177,23 @@
             slides.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        setInterval(() => {
-            changeTeamSlide(1);
-        }, 3000);
+        function startAutoSlide() {
+            autoSlide = setInterval(() => {
+                changeTeamSlide(1);
+            }, 3000);
+        }
 
+        function stopAutoSlide() {
+            clearInterval(autoSlide);
+        }
 
+        startAutoSlide();
 
-        // const carousel = document.querySelector(".team-carousel");
+        const carousel = document.querySelector(".carousel-slides");
 
-        // carousel.addEventListener("mouseenter", () => {
-        //     clearInterval(autoSlide);
-        // });
+        carousel.addEventListener("mouseenter", stopAutoSlide);
+        carousel.addEventListener("mouseleave", startAutoSlide);
 
-        // carousel.addEventListener("mouseleave", () => {
-        //     autoSlide = setInterval(() => {
-        //         changeTeamSlide(1);
-        //     }, 3000);
-        // });
 
     </script>
 </body>

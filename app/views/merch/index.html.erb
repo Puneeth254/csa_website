@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<div class="merch-container">
+  <h2>Our Products</h2>
+  <div class="product-grid">
+    <% @products.each do |product| %>
+      <div class="product-card">
+        <img src="/BG.jpg" alt="<%= product.name %>" class="product-image">
+        <div class="product-info">
+          <h3><%= product.name %></h3>
+          <p><strong>Category:</strong> <%= product.category.name %></p>
+          <p><strong>Price:</strong> $<%= product.price %></p>
+          <p><strong>Stock:</strong> <%= product.stock_quantity %> units</p>
+          <p><strong>Description:</strong> <%= product.description %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
