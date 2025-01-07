@@ -1,3 +1,11 @@
+<div class="flex-row-center-center">
+    <div class="Create_form">
+        <%= form_with url: events_path, method: :post, class: "d-flex", local: true do |form| %>
+            <%= form.text_field :Event_name, placeholder: "Create new Event", class: "form-control", style: "margin-right: 10px;" %>
+            <%= form.submit 'Create Event', class: "btn btn-success" %>
+        <% end %>
+    </div>
+</div>
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
 <div class="events_table flex-row-start-center upcoming_events" style="overflow-x:auto;">
     <div class="event_box flex-column-space-evenly-center">
