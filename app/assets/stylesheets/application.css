@@ -271,3 +271,294 @@
   background-color: rgba(248, 215, 218);
   border-color: #f5c6cb;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-row-gap: 30px; /* Space between the headings and events */
+    justify-items: center; /* Center-align items horizontally */
+    margin-top: 110px; /* Top margin for the container */
+    text-align: center; /* Center-align text inside headings and events */
+}
+
+.heading {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(130, 238, 71);
+    margin-bottom: 10px;
+    font-family: 'Arial Black', sans-serif;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 10px 14px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
+    max-height: 550px; /* Set max height for the column */
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    width: 360px;
+}
+
+/* About Us Section */
+.about-us-box {
+    width: 100%;
+    background-color: #333; /* Greyish-black background */
+    color: white; /* Text color */
+    padding: 40px 0; /* Space around content */
+    box-sizing: border-box;
+    margin-top :calc(30vh + 100px);
+}
+
+.about-us-arrow {
+    position: relative;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.about-us-arrow .arrow {
+    display: block;
+    width: 30px; /* Width of the arrow */
+    height: 30px; /* Height of the arrow */
+    border-left: 7px solid white; /* Thickness and color of the arrow */
+    border-bottom: 7px solid white;
+    transform: rotate(-45deg);
+    margin: 5px auto;
+    animation: bounce 1.5s infinite;
+}
+
+.about-us-arrow .arrow:nth-child(2) {
+    animation-delay: 0.3s; /* Slight delay for the second arrow */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: rotate(-45deg) translateY(0);
+    }
+    40% {
+        transform: rotate(-45deg) translateY(10px);
+    }
+    60% {
+        transform: rotate(-45deg) translateY(5px);
+    }
+}
+
+  
+.about-us-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin-left: 20px;
+    padding: 20px;
+}
+
+.about-us-text {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.about-us-text h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.about-us-text p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.about-us-images {
+    flex: 1;
+    position: relative;
+}
+
+/* Carousel Styling */
+.carousel {
+    position: relative;
+    width: 100%; /* Full width of the container */
+    max-width: 600px; /* Fixed maximum width for the carousel */
+    height: 300px; /* Fixed height for the carousel */
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #000; /* Optional: black background for visual appeal */
+}
+
+.image-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%; /* Ensure the container spans the width of the carousel */
+}
+
+.carousel-image {
+    flex-shrink: 0;
+    width: 100%; /* Match the width of the carousel */
+    height: 100%; /* Match the height of the carousel */
+    object-fit: cover; /* Cover the carousel dimensions, cropping as needed */
+}
+
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-button.prev {
+    left: 0px; /* Position for previous button */
+}
+
+.carousel-button.next {
+    right: 0px; /* Position for next button */
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.team-heading {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.team-heading h3 {
+    margin-top: 100px;
+    font-size: 60px;
+    font-family: 'Pacifico', cursive; /* Stylish font */
+    color: white;
+    display: inline-block; /* Ensures the text stays in one line */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Hides the overflow text */
+}
+
+
+.team-section {
+    padding: 20px;
+}
+
+.team-section h4 {
+    font-size: 40px;
+    color: #ecdfdf;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.team-row {
+    display: flex;
+    flex-wrap: none;
+    gap: 50px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.team-card {
+    text-align: center;
+    width: 450px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    /* border-radius: 50%; */
+    margin-bottom: 10px;
+}
+
+.team-card h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.team-card i {
+    font-size: 10px;
+    color: #333;
+}
+
+
+.team-carousel {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.team-section {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 10px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
