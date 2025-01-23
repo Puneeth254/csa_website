@@ -1,4 +1,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<% if current_user.username == "csa" %>
+    <div class="flex-row-center-center">
+        <div class="Create_form">
+            <%= form_with url: merch_path, method: :post, class: "d-flex", local: true do |form| %>
+                <%= form.text_field :name, placeholder: "Name", class: "form-control", style: "margin-right: 10px;" %>
+                <%= form.text_field :price, placeholder: "Price", class: "form-control", style: "margin-right: 10px;" %>
+                <%= form.text_field :description, placeholder: "Description", class: "form-control", style: "margin-right: 10px;" %>
+                <%= form.submit 'Add Merch', class: "btn btn-success" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
 <div class="merch-container">
   <h2>Our Products</h2>
   <div class="product-grid">
@@ -7,77 +21,12 @@
         <img src="/BG.jpg" alt="<%= product.name %>" class="product-image">
         <div class="product-info">
           <h3><%= product.name %></h3>
-          <p><strong>Category:</strong> <%= product.category.name %></p>
           <p><strong>Price:</strong> $<%= product.price %></p>
-          <p><strong>Stock:</strong> <%= product.stock_quantity %> units</p>
           <p><strong>Description:</strong> <%= product.description %></p>
         </div>
       </div>
     <% end %>
   </div>
 
-  <!-- Button to trigger the product form -->
-    <button id="add-product-button">+</button>
-
-    <!-- Hidden form for adding new product -->
-    <div id="new-product-form" style="display: none;">
-    <form id="product-form" method="post" action="/merch">
-        <label for="product-name">Product Name:</label>
-        <input type="text" id="product-name" name="product[name]" required>
-
-        <label for="product-description">Description:</label>
-        <input type="text" id="product-description" name="product[description]" required>
-
-        <label for="product-category">Category:</label>
-        <input type="text" id="product-category" name="product[category]" required>
-
-        <label for="product-price">Price:</label>
-        <input type="number" id="product-price" name="product[price]" required>
-
-        <label for="product-size">Size:</label>
-        <input type="text" id="product-size" name="product[size]">
-
-        <label for="product-color">Color:</label>
-        <input type="text" id="product-color" name="product[color]" required>
-
-        <label for="product-stock-quantity">Stock Quantity:</label>
-        <input type="number" id="product-stock-quantity" name="product[stock_quantity]" required>
-
-        <button type="submit">Add Product</button>
-    </form>
-    </div>
-
 </div>
-
-<script>
-
-document.getElementById("add-product-button").addEventListener("click", function() {
-  var form = document.getElementById("new-product-form");
-  form.style.display = form.style.display === "none" ? "block" : "none";  // Toggle form visibility
-});
-
-
-document.getElementById("product-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  
-  const formData = new FormData(this);
-  
-  fetch('/merch', {
-    method: 'POST',
-    headers: {
-      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content // Add CSRF token
-    },
-    body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Handle the success or failure
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-});
-
-</script>
 

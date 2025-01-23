@@ -9,9 +9,9 @@
 #   end
 
 # Categories for merch
-["Clothing", "Accessories", "Electronics", "Footwear"].each do |category_name|
-  Category.find_or_create_by!(name: category_name)
-end
+# ["Clothing", "Accessories", "Electronics", "Footwear"].each do |category_name|
+#   Category.find_or_create_by!(name: category_name)
+# end
 
 # Suppliers
 [
@@ -26,19 +26,14 @@ end
 
 # Products
 [
-  { name: "Cotton T-Shirt", description: "100% Cotton, soft and durable", category: "Clothing", price: 19.99, size: "M", color: "Blue", stock_quantity: 100 },
-  { name: "Leather Wallet", description: "Premium quality leather", category: "Accessories", price: 49.99, size: nil, color: "Brown", stock_quantity: 50 },
-  { name: "Bluetooth Headphones", description: "Noise-canceling over-ear headphones", category: "Electronics", price: 89.99, size: nil, color: "Black", stock_quantity: 30 },
-  { name: "Running Shoes", description: "Comfortable and lightweight", category: "Footwear", price: 59.99, size: "10", color: "Gray", stock_quantity: 20 }
+  { name: "Cotton T-Shirt", description: "100% Cotton, soft and durable", price: 19.99},
+  { name: "Leather Wallet", description: "Premium quality leather", price: 49.99},
+  { name: "Bluetooth Headphones", description: "Noise-canceling over-ear headphones", price: 89.99},
+  { name: "Running Shoes", description: "Comfortable and lightweight", price: 59.99}
 ].each do |product_data|
-  category = Category.find_by(name: product_data[:category])
   Product.find_or_create_by!(name: product_data[:name]) do |product|
     product.description = product_data[:description]
-    product.category = category
     product.price = product_data[:price]
-    product.size = product_data[:size]
-    product.color = product_data[:color]
-    product.stock_quantity = product_data[:stock_quantity]
   end
 end
 
@@ -55,15 +50,15 @@ end
   end
 end
 
-category = Category.find_by(name: "Clothing")
-Product.find_or_create_by!(name: "New T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
-Product.find_or_create_by!(name: "New1 T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
-Product.find_or_create_by!(name: "New2 T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
-Product.find_or_create_by!(name: "New3 T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
-product = Product.find_by(name: "New3 T-Shirt")
-if product
-  product.update!(price: 24.99) 
-end
+# category = Category.find_by(name: "Clothing")
+# Product.find_or_create_by!(name: "New T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
+# Product.find_or_create_by!(name: "New1 T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
+# Product.find_or_create_by!(name: "New2 T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
+# Product.find_or_create_by!(name: "New3 T-Shirt", description: "Test", category: category, price: 19.99, size: "M", color: "Blue", stock_quantity: 100)
+# product = Product.find_by(name: "New3 T-Shirt")
+# if product
+#   product.update!(price: 24.99) 
+# end
 
 puts "Seeding complete!"
 

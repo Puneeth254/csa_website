@@ -1,18 +1,21 @@
 class MerchController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
-    @categories = Category.all
     @suppliers = Supplier.all
-    @products = Product.includes(:category).all
+    @products = Product.all
     @sales = Sale.includes(:product).all
   end
 
   def create
+    @suppliers = Supplier.all
+    @products = Product.all
+    @sales = Sale.includes(:product).all
+
     @product = Product.new(product_params)
-    @category = Category.find_by(name: params[:product][:category])
-    @product.category = @category if @category
   
     if @product.save
-      redirect_to products_path, notice: 'Product was successfully created.'
+      redirect_to merch_path, notice: 'Merch was successfully added.'
     else
       render :index
     end
@@ -22,7 +25,7 @@ class MerchController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category, :price, :size, :color, :stock_quantity)
+    params.permit(:name, :price, :description)
   end
 
 end
