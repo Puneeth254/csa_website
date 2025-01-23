@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
   get "merch/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,5 +22,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "pages#home"
   resources :events
+  resources :cstrophy
   resources :merch, only: [:index, :new, :create]
 end
