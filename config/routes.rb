@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "pages#home"
   resources :events
+  resources :merch, only: [:index, :new, :create]
 end
