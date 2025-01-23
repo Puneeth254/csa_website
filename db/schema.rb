@@ -10,9 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_16_165952) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_23_171209) do
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "event_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_type"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category_id", null: false
+    t.decimal "price"
+    t.string "size"
+    t.string "color"
+    t.integer "stock_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.string "customer_name"
+    t.integer "quantity"
+    t.date "sale_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_sales_on_product_id"
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "contact_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,4 +66,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_16_165952) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "products", "categories"
+  add_foreign_key "sales", "products"
 end

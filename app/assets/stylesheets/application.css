@@ -319,7 +319,7 @@
     color: white; /* Text color */
     padding: 40px 0; /* Space around content */
     box-sizing: border-box;
-    margin-top :calc(30vh + 100px);
+    margin-top :calc(20vh + 100px);
 }
 
 .about-us-arrow {
