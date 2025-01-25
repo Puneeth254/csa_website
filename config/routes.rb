@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "feedback" => "pages#feedback"
   get "home" => "pages#home"
   get "merch" => "merch#index"
+  get 'merch/export_sales', to: 'merch#export_sales', as: 'export_sales_merch'
 
   # Defines the root path route ("/")
   # root "posts#index"
@@ -24,4 +25,12 @@ Rails.application.routes.draw do
   resources :events
   resources :cstrophy
   resources :merch, only: [:index, :new, :create]
+  resources :sales, only: [:create]
+
+  resources :merch do
+    collection do
+      get :export_sales
+    end
+  end
+  
 end

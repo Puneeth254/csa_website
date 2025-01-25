@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+
 <% if current_user.username == "csa" %>
     <div class="flex-row-center-center">
         <div class="Create_form">
@@ -7,9 +8,13 @@
                 <%= form.text_field :name, placeholder: "Name", class: "form-control", style: "margin-right: 10px;" %>
                 <%= form.text_field :price, placeholder: "Price", class: "form-control", style: "margin-right: 10px;" %>
                 <%= form.text_field :description, placeholder: "Description", class: "form-control", style: "margin-right: 10px;" %>
+                <%# <%= form.file_field :image, class: "form-control", style: "margin-right: 10px;" %>
                 <%= form.submit 'Add Merch', class: "btn btn-success" %>
             <% end %>
+            
         </div>
+        <%= link_to 'Download Sales Data', export_sales_merch_index_path(format: :xlsx), class: 'btn btn-primary', style: 'position: relative; left: 80px;' %>
+        
     </div>
 <% end %>
 
@@ -18,15 +23,140 @@
   <div class="product-grid">
     <% @products.each do |product| %>
       <div class="product-card">
-        <img src="/BG.jpg" alt="<%= product.name %>" class="product-image">
         <div class="product-info">
+          <img src="<%= product.image.presence || '/merch/tshirt.jpg' %>" alt="<%= product.name %>" class="product-image">
           <h3><%= product.name %></h3>
           <p><strong>Price:</strong> $<%= product.price %></p>
           <p><strong>Description:</strong> <%= product.description %></p>
+          <button class="btn btn-success" onclick="openForm('<%= product.name %>')">Purchase</button>
         </div>
       </div>
     <% end %>
   </div>
-
 </div>
 
+<!-- Purchase Form (Initially Hidden) -->
+<div class="overlay" id="overlay" style="display: none;">
+  <div class="Purchase_form">
+    <%= form_with url: sales_path, method: :post, class: "d-flex flex-column", local: true do |form| %>
+      <label class="product-label"><strong id="product-label"></strong></label>
+      <%= form.hidden_field :product_name, id: "product-name" %>
+
+     
+      <%= form.text_field :student_name, placeholder: "Name", class: "form-control input-field" %>
+      <%= form.text_field :roll_number, placeholder: "Roll Number", class: "form-control input-field" %>
+      
+
+      <div class="size-selection">
+        <label class="size-title">Size:</label>
+        <div class="size-options">
+          <%= form.radio_button :size, "S", id: "size_s" %>
+          <label for="size_s">S</label>
+
+          <%= form.radio_button :size, "M", id: "size_m" %>
+          <label for="size_m">M</label>
+
+          <%= form.radio_button :size, "L", id: "size_l" %>
+          <label for="size_l">L</label>
+
+          <%= form.radio_button :size, "XL", id: "size_xl" %>
+          <label for="size_xl">XL</label>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <%= form.submit 'Confirm Purchase', class: "btn btn-success" %>
+        <button class="btn btn-danger" type="button" onclick="closeForm()">Cancel</button>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- JavaScript for Modal Behavior -->
+<script>
+  function openForm(productName) {
+    document.getElementById("product-name").value = productName;
+    document.getElementById("product-label").innerText = productName;
+    document.getElementById("overlay").style.display = "flex";
+    document.body.classList.add("modal-open");
+  }
+
+  function closeForm() {
+    document.getElementById("overlay").style.display = "none";
+    document.body.classList.remove("modal-open");
+  }
+</script>
+
+<!-- CSS for Styling -->
+<style>
+  /* Overlay (Hidden Initially) */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  /* Purchase Form */
+  .Purchase_form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 350px;
+  }
+
+  /* Product Name Styling */
+  .product-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  /* Form Inputs (Stacked Vertical) */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+    width:100%;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 8px;
+  }
+
+  /* Size Selection */
+  .size-title {
+    font-weight: bold;
+  }
+
+  .size-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Button Styling */
+  .button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  /* Blur Background When Form is Open */
+  body.modal-open {
+    overflow: hidden;
+  }
+</style>

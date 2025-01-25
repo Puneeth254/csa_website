@@ -889,7 +889,7 @@
 .merch-container h2 {
     text-align: center;
     margin-bottom: 40px;
-    color: #f14848;
+    color: #068a53;
     font-size: 50px;
 }
 
@@ -914,21 +914,21 @@
     transform: translateY(-5px);
 }
   
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-}
-  
 .product-info {
     padding: 15px;
     background-color: #f9f9f9;
+}
+
+.product-info img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
 }
   
 .product-info h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
+    margin-top: 5px;
 }
   
 .product-info p {
@@ -939,6 +939,11 @@
 .product-info strong {
     font-weight: bold;
     color: #333;
+}
+
+.product-info button{
+    display: block;
+    margin: 0px auto;
 }
   
 @media (max-width: 768px) {
@@ -952,4 +957,62 @@
       width: 100%;
     }
 }
+  
+  /* Stack elements vertically on small screens */
+  @media screen and (max-width: 768px) {
+    .about-us-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .about-us-text {
+      text-align: center;
+      font-size: 13px;
+    }
+  
+    .about-us-images {
+      width: 100%;
+      overflow: hidden;
+    }
+  
+    .image-container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .carousel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .carousel-button {
+      margin: 5px; /* Space between buttons */
+    }
+  
+    /* Adjust team section for mobile */
+    .team-row {
+      flex-direction: column; /* Stack team members vertically */
+      align-items: center;
+    }
+  
+    .team-card {
+      width: 90%; /* Adjust card width */
+      margin-bottom: 10px; /* Add space between stacked cards */
+    }
+  
+    /* Ensure images scale properly */
+    .team-card img {
+      width: 100px; /* Adjust image size */
+      height: 100px;
+      border-radius: 10%;
+    }
+  
+    /* Adjust buttons for smaller screens */
+    .carousel-btn {
+      font-size: 10px; /* Reduce button size */
+    }
+  }
+  
   

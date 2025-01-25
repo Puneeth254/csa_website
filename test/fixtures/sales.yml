@@ -2,12 +2,12 @@
 
 one:
   product: one
-  customer_name: MyString
-  quantity: 1
-  sale_date: 2025-01-04
+  student_name: MyString
+  roll_number: MyString
+  size: MyString
 
 two:
   product: two
-  customer_name: MyString
-  quantity: 1
-  sale_date: 2025-01-04
+  student_name: MyString
+  roll_number: MyString
+  size: MyString
