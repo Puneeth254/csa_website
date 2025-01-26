@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_23_171209) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_26_211611) do
+  create_table "batch_points", force: :cascade do |t|
+    t.string "batch_name"
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -22,6 +29,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_23_171209) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_type"
+  end
+
+  create_table "merches", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|

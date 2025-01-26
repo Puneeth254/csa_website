@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "pages#home"
+  get '/profile', to: 'pages#profile'
+  post 'events/:id/start', to: 'events#start', as: :start
+  post 'events/:id/end', to: 'events#end', as: :end
   resources :events
   resources :cstrophy
+  resources :merch
 end

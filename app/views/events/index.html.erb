@@ -14,11 +14,14 @@
     <% @upcoming_events.each do |event| %>
         <div class="event_box flex-column-space-evenly-center">
             <div class="event_name" style="text-decoration: underline">Upcoming events</div>
-                <div class="event_name"><%= event.event_name %></div>
-                <div class="flex-row-space-between-center" style="width:80%;">
-                    <%= link_to "Register", root_path, class: 'btn btn-success' %>
-                    <%= link_to "Participants", root_path, class: 'btn btn-primary' %>
-                </div>
+            <div class="event_name"><%= event.event_name %></div>
+            <div class="flex-row-space-evenly-center" style="width:100%;">
+                <%= link_to "Register", root_path, class: 'btn btn-success' %>
+                <%= link_to "Participants", root_path, class: 'btn btn-primary' %>
+            </div>
+            <% if current_user.username == "csa" %>
+                <%= button_to "Start Event", start_path(event), method: :post, class: 'btn btn-success' %>
+            <% end %>
         </div>
     <% end %>
 </div>
@@ -26,21 +29,28 @@
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
 <div class="events_table flex-row-start-center current_events">
-    <div class="event_box flex-column-space-evenly-center">
-        <div class="event_name" style="text-decoration: underline">Ongoing events</div>
-        <div class="event_name">Rock Nite</div>
-        <div class="flex-row-center-center" style="width:80%;">
-            <%= link_to "Participants", root_path, class: 'btn btn-primary' %>
+    <% @ongoing_events.each do |event| %>
+        <div class="event_box flex-column-space-evenly-center">
+            <div class="event_name" style="text-decoration: underline">Ongoing events</div>
+            <div class="event_name"><%= event.event_name %></div>
+            <div class="flex-row-space-between-center" style="width:80%;">
+                <%= link_to "Participants", root_path, class: 'btn btn-primary' %>
+            </div>
+            <% if current_user.username == "csa" %>
+                <%= button_to "End Event", end_path(event), method: :post, class: 'btn btn-danger' %>
+            <% end %>
         </div>
-    </div>
+    <% end %>
 </div>
 </div>
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
 <div class="events_table flex-row-start-center completed_events">
-    <div class="event_box flex-column-space-evenly-center">
-        <div class="event_name" style="text-decoration: underline">Completed events</div>
-        <div class="event_name">Rock Nite</div>
-    </div>
+    <% @completed_events.each do |event| %>
+        <div class="event_box flex-column-space-evenly-center">
+            <div class="event_name" style="text-decoration: underline">Completed events</div>
+            <div class="event_name"><%= event.event_name %></div>
+        </div>
+    <% end %>
 </div>
 </div>

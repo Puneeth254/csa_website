@@ -452,6 +452,21 @@
     overflow: hidden; /* Hides the overflow text */
 }
 
+@media (max-width: 768px) {
+    .team-card img{
+        height: 60px;
+    }
+    .team-card h5{
+        font-size: 10px;
+    }
+    .team-heading h3{
+        font-size: 30px;
+        height: 40px;
+    }
+    .about-us-images{
+        display: none;
+    }
+}
 
 .team-section {
     padding: 20px;
@@ -561,4 +576,78 @@
 
 .carousel-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+.profile_box{
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    width: 100vh;
+    padding: 30px;
+}
+
+.event_details_box, .merch_details_box{
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.event_details_box:hover, .merch_details_box:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 3px 3px 4.5px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.points-table {
+    width: 60%;
+    margin: 40px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensures corners remain rounded */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif; /* Modern font */
+}
+
+.points-table th,.points-table td {
+    padding: 15px;
+    /* border: 1px solid #ddd; */
+}
+
+.points-table th {
+    background-color: #333;
+    color: white;
+    font-size: 18px;
+}
+
+.points-table tr:nth-child(1) {
+    background-color: gold;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.points-table tr:nth-child(2) {
+    background-color: silver;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.points-table tr:nth-child(3) {
+    background-color: #cd7f32; /* Bronze color */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.points-table tr:nth-child(n+4) {
+    background-color: #f8f9fa; /* Light grey for remaining rows */
+}
+
+/* Highlight effect on hover */
+.points-table tr:hover {
+    /* background-color: #ffc107; Highlight color */
+    transform: scale(1.1); /* Slight zoom effect */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
 }
