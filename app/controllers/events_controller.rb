@@ -12,9 +12,10 @@ class EventsController < ApplicationController
     end
 
     def create
-        params.permit(:event_name)
+        params.permit(:event_name, :team_size)
         event = Event.new(
             event_name: params[:event_name],
+            team_size: params[:team_size],
             event_type: 1
         )
         unless event.save
@@ -29,12 +30,21 @@ class EventsController < ApplicationController
     def start
         params.permit(:id)
         Event.find_by(id: params[:id])&.update(event_type: 2)
-        redirect_to events_path, notice: 'Event Started Successfully'
+        redirect_to events_path, notice: 'Event started successfully'
     end
 
     def end
         params.permit(:id)
         Event.find_by(id: params[:id])&.update(event_type: 3)
-        redirect_to events_path, notice: 'Event Completed Successfully'
+        redirect_to events_path, notice: 'Event completed successfully'
+    end
+
+    def destroy
+        params.permit(:id)
+        event = Event.find_by(id: params[:id])
+        event_name = event.event_name.to_s
+        event.destroy
+        EventRegistrations.where(event_name: event_name).destroy_all
+        redirect_to events_path, notice: 'Event deleted successfully'
     end
 end

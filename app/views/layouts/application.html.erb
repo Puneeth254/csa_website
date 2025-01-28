@@ -88,10 +88,12 @@
           <div class="drop-down-menu">
             <div class="menu flex-column-start-center">
               <div><img class="drop-down-on" src="/three-dots-horizontal.svg" height="20px"></div>
-              <div class="nav_link"><%= link_to "CS Trophy", cstrophy_index_path %></div>
+              <div class="nav_link"><%= link_to "Home", root_path %></div>
+              <div class="nav_link"><%= link_to "Resources", root_path %></div>
+              <div class="nav_link"><%= link_to "Cs trophy", cstrophy_index_path %></div>
               <div class="nav_link"><%= link_to "Events", events_path %></div>
               <div class="nav_link"><%= link_to "Merch", merch_index_path %></div>
-              <div class="nav_link"><%= link_to "Profile", root_path %></div>
+              <div class="nav_link"><%= link_to "Profile", profile_path %></div>
               <div>
                 <%if current_user%>
                   <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger", style: "margin:0px 4px;" %>

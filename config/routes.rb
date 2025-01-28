@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile'
   post 'events/:id/start', to: 'events#start', as: :start
   post 'events/:id/end', to: 'events#end', as: :end
+  resources :event_registrations
   resources :events
   resources :cstrophy
   resources :merch
+  resources :sales
 end

@@ -190,6 +190,16 @@
     animation: gradient-animation 7s ease infinite;
 }
 
+.center-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+}
+
 .Create_form{
     background-color: rgb(228, 228, 228);
     padding: 10px 40px;
@@ -579,10 +589,10 @@
 }
 
 .profile_box{
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     border-radius: 30px;
-    width: 100vh;
+    width: 90%;
     padding: 30px;
 }
 
@@ -591,6 +601,7 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     border-radius: 30px;
     padding: 30px;
+    margin: 2px;
 }
 
 .event_details_box:hover, .merch_details_box:hover{
@@ -650,4 +661,64 @@
     /* background-color: #ffc107; Highlight color */
     transform: scale(1.1); /* Slight zoom effect */
     transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.merch-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: stretch;
+}
+  
+.product-card {
+    width: 30%;
+    border: 0px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+  
+.product-card:hover {
+    transform: translateY(-1px);
+}
+  
+.product-info {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.product-info img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+  
+.product-info h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+  
+.product-info p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+  
+.product-info strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-info button{
+    display: block;
+    margin: 0px auto;
 }

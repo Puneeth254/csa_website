@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_26_211611) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_28_123324) do
   create_table "batch_points", force: :cascade do |t|
     t.string "batch_name"
     t.integer "points"
@@ -18,8 +18,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_26_211611) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "event_registrations", force: :cascade do |t|
+    t.string "event_name"
+    t.string "team_name"
+    t.string "players"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +31,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_26_211611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_type"
+    t.integer "team_size"
   end
 
   create_table "merches", force: :cascade do |t|
@@ -37,36 +40,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_26_211611) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "category_id", null: false
-    t.decimal "price"
-    t.string "size"
-    t.string "color"
-    t.integer "stock_quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
+    t.string "url_of_image"
+    t.string "is_customized"
   end
 
   create_table "sales", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.string "customer_name"
-    t.integer "quantity"
-    t.date "sale_date"
+    t.string "merch_name"
+    t.string "name_to_be_customised"
+    t.string "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_sales_on_product_id"
-  end
-
-  create_table "suppliers", force: :cascade do |t|
-    t.string "name"
-    t.string "contact_info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "ordered_by"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,7 +65,4 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_26_211611) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_foreign_key "products", "categories"
-  add_foreign_key "sales", "products"
 end

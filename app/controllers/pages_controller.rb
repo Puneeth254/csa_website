@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     end
 
     def profile
-
+        @events_registered = EventRegistrations.where("event_registrations.players LIKE ?", "%#{current_user.username}%")
+        @merch_purchased = Sale.where(ordered_by: current_user.username)
     end
 end
