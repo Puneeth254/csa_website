@@ -8,4 +8,5 @@ class User < ApplicationRecord
   def self.find_for_authentication(conditions)
     where(username: conditions[:username]).first
   end
+  has_many :sales
 end

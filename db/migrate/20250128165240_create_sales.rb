@@ -1,9 +1,11 @@
 class CreateSales < ActiveRecord::Migration[7.2]
   def change
     create_table :sales do |t|
-      t.string :merch_name
-      t.string :name_to_be_customised
+      t.references :product, null: false, foreign_key: true
+      t.string :student_name
+      t.string :roll_number
       t.string :size
+      t.string :customization_name
 
       t.timestamps
     end

@@ -2,13 +2,11 @@ class MerchController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @suppliers = Supplier.all
     @products = Product.all
     @sales = Sale.includes(:product).all
   end
 
   def create
-    @suppliers = Supplier.all
     @products = Product.all
     @sales = Sale.includes(:product).all
 
@@ -22,7 +20,6 @@ class MerchController < ApplicationController
   end
 
   def export_sales
-    @suppliers = Supplier.all
     @products = Product.all
 
     @sales = Sale.all
@@ -32,7 +29,6 @@ class MerchController < ApplicationController
   end
 
   def destroy
-    @suppliers = Supplier.all
     @products = Product.all
     @sales = Sale.includes(:product).all
 
@@ -46,11 +42,11 @@ class MerchController < ApplicationController
   private
 
   def purchase_params
-    params.permit(:product_name, :student_name, :roll_number, :size)
+    params.permit(:product_name, :student_name, :roll_number, :customization_name, :size)
   end
 
   def product_params
-    params.permit(:name, :price, :description, :image)
+    params.permit(:name, :price, :description, :image, :is_customized)
   end
 
 end

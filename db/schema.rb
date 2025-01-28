@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_25_175534) do
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+ActiveRecord::Schema[7.2].define(version: 2025_01_28_174626) do
+  create_table "batch_points", force: :cascade do |t|
+    t.string "batch_name"
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "event_registrations", force: :cascade do |t|
+    t.string "event_name"
+    t.string "team_name"
+    t.string "players"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,13 +34,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_25_175534) do
     t.integer "team_size"
   end
 
-  create_table "merches", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.decimal "price"
+    t.string "image"
+    t.string "is_customized"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
   end
 
   create_table "sales", force: :cascade do |t|
@@ -39,9 +49,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_25_175534) do
     t.string "student_name"
     t.string "roll_number"
     t.string "size"
+    t.string "customization_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "ordered_by"
+    t.integer "user_id"
+    t.index ["product_id"], name: "index_sales_on_product_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,4 +71,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_25_175534) do
   end
 
   add_foreign_key "sales", "products"
+  add_foreign_key "sales", "users"
 end

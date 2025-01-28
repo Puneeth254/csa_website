@@ -8,12 +8,26 @@
                 <%= form.text_field :name, placeholder: "Name", class: "form-control", style: "margin-right: 10px;", required: true %>
                 <%= form.text_field :price, placeholder: "Price", class: "form-control", style: "margin-right: 10px;", required: true  %>
                 <%= form.text_field :description, placeholder: "Description", class: "form-control", style: "margin-right: 10px;", required: true  %>
-                <%= form.file_field :image, class: "form-control", style: "margin-right: 10px;", required: true  %>
+                <%# <%= form.file_field :image, class: "form-control", style: "margin-right: 10px;", required: true  %>
+                <%= form.text_field :image, placeholder: "Image URL", class: "form-control", style: "margin-right: 10px;", required: true %>
+
+                <div class="custom-selection">
+                  <label>Customized:</label>
+                  <div class="custom-options">
+                    <%= form.radio_button :is_customized, "Yes", id: "customized_yes", required: true %>
+                    <label for="customized_s">Yes</label>
+
+                    <%= form.radio_button :is_customized, "No", id: "customized_no", required: true %>
+                    <label for="customized_no">No</label>
+
+                  </div>
+                </div>
+
                 <%= form.submit 'Add Merch', class: "btn btn-success" %>
             <% end %>
             
         </div>
-        <%= link_to 'Download Sales Data', export_sales_merch_index_path(format: :xlsx), class: 'btn btn-primary', style: 'position: relative; left: 40px; width: 190px' %>
+        <%= link_to 'Sales Data', export_sales_merch_index_path(format: :xlsx), class: 'btn btn-primary', style: 'position: relative; left: 40px; width: 190px' %>
         
     </div>
 <% end %>
@@ -24,11 +38,12 @@
     <% @products.each do |product| %>
       <div class="product-card">
         <div class="product-info">
-          <img src="<%= product.image.presence || '/merch/tshirt.jpg' %>" alt="<%= product.name %>" class="product-image">
+          <img src="<%= product.image%>" alt="<%= product.name %>" class="product-image">
           <h3><%= product.name %></h3>
           <p><strong>Price:</strong> $<%= product.price %></p>
           <p><strong>Description:</strong> <%= product.description %></p>
-          <button class="btn btn-success" onclick="openForm('<%= product.name %>')">Purchase</button>
+          <p><strong>Customized:</strong> <%= product.is_customized %></p>
+          <button class="btn btn-success" onclick="openForm('<%= product.name %>','<%= product.is_customized %>')">Purchase</button>
 
           <% if current_user.username == "csa" %>
             <button class="btn btn-danger" onclick="openDeleteForm('<%= product.name %>')">Delete</button>
@@ -49,6 +64,10 @@
      
       <%= form.text_field :student_name, placeholder: "Name", class: "form-control input-field", required: true  %>
       <%= form.text_field :roll_number, placeholder: "Roll Number", class: "form-control input-field", required: true  %>
+       <div id="customization-field" style="display: none;">
+        <%= form.text_field :customization_name, placeholder: "Name to be customized", class: "form-control input-field" %>
+      </div>
+
       
 
       <div class="size-selection">
@@ -99,10 +118,16 @@
 
 <!-- JavaScript for Modal Behavior -->
 <script>
-  function openForm(productName) {
+  function openForm(productName, is_customized) {
     document.getElementById("product-name").value = productName;
     document.getElementById("product-label").innerText = productName;
     document.getElementById("overlay").style.display = "flex";
+    const customizationField = document.getElementById("customization-field");
+    if (is_customized.toLowerCase() === "yes") {
+      customizationField.style.display = "block";
+    } else {
+      customizationField.style.display = "none";
+    }
     document.body.classList.add("modal-open");
   }
 
@@ -126,6 +151,27 @@
 
 
 <style>
+
+  .custom-selection {
+      display: flex;
+      align-items: center;  /* Align items in the same row */
+      gap: 10px; 
+  }
+
+  .custom-options {
+      display: flex;
+      gap: 8px;
+      margin-left:-1px;
+      margin-right:10px;
+  }
+
+  .flex-row-center-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: center; */
+    /* width: 1500px; */
+  }
   /* Overlay (Hidden Initially) */
   .overlay {
     display: none;

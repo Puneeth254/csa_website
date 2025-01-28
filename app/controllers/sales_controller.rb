@@ -14,6 +14,7 @@ class SalesController < ApplicationController
     # Create a new sale with the found product's ID
     @sale = Sale.new(sale_params)
     @sale.product = product
+    @sale.user = current_user
 
     if @sale.save
       redirect_to merch_path, notice: 'Sale was successfully recorded.'
@@ -25,6 +26,6 @@ class SalesController < ApplicationController
   private
 
   def sale_params
-    params.permit(:student_name, :roll_number, :size)
+    params.permit(:student_name, :roll_number, :size, :customization_name)
   end
 end

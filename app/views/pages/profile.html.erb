@@ -7,21 +7,11 @@
         </div>
         <hr class="border border-secondary border-2 opacity-50">
         <div class="flex-row-space-evenly-center posessed_details_box">
-            <div class="flex-col-center-center event_details_box">
-                <div><h5 style="text-decoration:underline">Here's your registered events</h5></div>
-                <% if @events_registered.present? %>
-                    <% @events_registered.each do |reg| %>
-                        <div class="flex-row-center-center"><%= reg.event_name %>, <%= reg.team_name %> </div>
-                    <% end %>
-                <% else %>
-                    <div class="flex-row-center-center"> No registrations yet </div>
-                <% end %>
-            </div>
             <div class="flex-col-center-center merch_details_box">
                 <div><h5 style="text-decoration:underline">Here's your purchased Merch</h5></div>
                 <% if @merch_purchased.present? %>
                     <% @merch_purchased.each do |item| %>
-                        <div class="flex-row-center-center"><%= item.merch_name %></div>
+                        <div class="flex-row-center-center"><%= item.product.name %></div>
                     <% end %>
                 <% else %>
                     <div class="flex-row-center-center">No purchases yet</div>

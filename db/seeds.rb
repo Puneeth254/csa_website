@@ -8,41 +8,26 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# Categories for merch
-# ["Clothing", "Accessories", "Electronics", "Footwear"].each do |category_name|
-#   Category.find_or_create_by!(name: category_name)
-# end
-
-# Suppliers
-[
-  { name: "Global Suppliers Co.", contact_info: "contact@globalsuppliers.com" },
-  { name: "Fast Fashion Ltd.", contact_info: "info@fastfashion.com" },
-  { name: "Gadget World", contact_info: "support@gadgetworld.com" }
-].each do |supplier_data|
-  Supplier.find_or_create_by!(name: supplier_data[:name]) do |supplier|
-    supplier.contact_info = supplier_data[:contact_info]
-  end
-end
-
 # Products
 [
-  { name: "Cotton T-Shirt", description: "100% Cotton, soft and durable", price: 19.99, image: "tshirt.jpg"},
-  { name: "Leather Wallet", description: "Premium quality leather", price: 49.99, image: "tshirt.jpg"},
-  { name: "Bluetooth Headphones", description: "Noise-canceling over-ear headphones", price: 89.99, image: "tshirt.jpg"},
-  { name: "Running Shoes", description: "Comfortable and lightweight", price: 59.99, image: "tshirt.jpg"}
+  { name: "Cotton T-Shirt", description: "100% Cotton, soft and durable", price: 19.99, image: "https://images-cdn.ubuy.co.in/64831b886802b3365d36c809-software-developer-computer-engineer.jpg", is_customized: "Yes"},
+  { name: "Leather Wallet", description: "Premium quality leather", price: 49.99, image: "https://images-cdn.ubuy.co.in/64831b886802b3365d36c809-software-developer-computer-engineer.jpg", is_customized: "Yes"},
+  { name: "Bluetooth Headphones", description: "Noise-canceling over-ear headphones", price: 89.99, image: "https://images-cdn.ubuy.co.in/64831b886802b3365d36c809-software-developer-computer-engineer.jpg", is_customized: "No"},
+  { name: "Running Shoes", description: "Comfortable and lightweight", price: 59.99, image: "https://images-cdn.ubuy.co.in/64831b886802b3365d36c809-software-developer-computer-engineer.jpg", is_customized: "No"}
 ].each do |product_data|
   Product.find_or_create_by!(name: product_data[:name]) do |product|
     product.description = product_data[:description]
     product.price = product_data[:price]
-    product.image = "/merch/#{product_data[:image]}"
+    product.image = product_data[:image]
+    product.is_customized = product_data[:is_customized]
   end
 end
 
 # Sales records for testing purposes
 [
-  { product_name: "Cotton T-Shirt", student_name: "Alice", roll_number: "CS23B001", size: "S" },
-  { product_name: "Leather Wallet", student_name: "Bob", roll_number: "CS23B001", size: "S" },
-  { product_name: "Bluetooth Headphones", student_name: "Charlie", roll_number: "CS23B001", size: "S" }
+  { product_name: "Cotton T-Shirt", student_name: "Alice", roll_number: "CS23B001", size: "S", customization_name: nil },
+  { product_name: "Leather Wallet", student_name: "Bob", roll_number: "CS23B001", size: "S", customization_name: "Babulake baabu" },
+  { product_name: "Bluetooth Headphones", student_name: "Charlie", roll_number: "CS23B001", size: "S", customization_name: nil }
 ].each do |sale_data|
   product = Product.find_by(name: sale_data[:product_name])
 
@@ -51,7 +36,8 @@ end
       sale.student_name = sale_data[:student_name]
       sale.size = sale_data[:size]
       sale.roll_number = sale_data[:roll_number]
-      sale.product_name = sale_data[:product_name]
+      sale.customization_name = sale_data[:customization_name]
+      # sale.product_name = sale_data[:product_name]
     end
   else
     puts "Warning: Product '#{sale_data[:product_name]}' not found!"
