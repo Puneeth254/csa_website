@@ -5,15 +5,15 @@
     <div class="flex-row-center-center">
         <div class="Create_form">
             <%= form_with url: merch_path, method: :post, class: "d-flex", local: true do |form| %>
-                <%= form.text_field :name, placeholder: "Name", class: "form-control", style: "margin-right: 10px;" %>
-                <%= form.text_field :price, placeholder: "Price", class: "form-control", style: "margin-right: 10px;" %>
-                <%= form.text_field :description, placeholder: "Description", class: "form-control", style: "margin-right: 10px;" %>
-                <%# <%= form.file_field :image, class: "form-control", style: "margin-right: 10px;" %>
+                <%= form.text_field :name, placeholder: "Name", class: "form-control", style: "margin-right: 10px;", required: true %>
+                <%= form.text_field :price, placeholder: "Price", class: "form-control", style: "margin-right: 10px;", required: true  %>
+                <%= form.text_field :description, placeholder: "Description", class: "form-control", style: "margin-right: 10px;", required: true  %>
+                <%= form.file_field :image, class: "form-control", style: "margin-right: 10px;", required: true  %>
                 <%= form.submit 'Add Merch', class: "btn btn-success" %>
             <% end %>
             
         </div>
-        <%= link_to 'Download Sales Data', export_sales_merch_index_path(format: :xlsx), class: 'btn btn-primary', style: 'position: relative; left: 80px;' %>
+        <%= link_to 'Download Sales Data', export_sales_merch_index_path(format: :xlsx), class: 'btn btn-primary', style: 'position: relative; left: 40px; width: 190px' %>
         
     </div>
 <% end %>
@@ -29,13 +29,17 @@
           <p><strong>Price:</strong> $<%= product.price %></p>
           <p><strong>Description:</strong> <%= product.description %></p>
           <button class="btn btn-success" onclick="openForm('<%= product.name %>')">Purchase</button>
+
+          <% if current_user.username == "csa" %>
+            <button class="btn btn-danger" onclick="openDeleteForm('<%= product.name %>')">Delete</button>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
 
-<!-- Purchase Form (Initially Hidden) -->
+
 <div class="overlay" id="overlay" style="display: none;">
   <div class="Purchase_form">
     <%= form_with url: sales_path, method: :post, class: "d-flex flex-column", local: true do |form| %>
@@ -43,30 +47,51 @@
       <%= form.hidden_field :product_name, id: "product-name" %>
 
      
-      <%= form.text_field :student_name, placeholder: "Name", class: "form-control input-field" %>
-      <%= form.text_field :roll_number, placeholder: "Roll Number", class: "form-control input-field" %>
+      <%= form.text_field :student_name, placeholder: "Name", class: "form-control input-field", required: true  %>
+      <%= form.text_field :roll_number, placeholder: "Roll Number", class: "form-control input-field", required: true  %>
       
 
       <div class="size-selection">
         <label class="size-title">Size:</label>
         <div class="size-options">
-          <%= form.radio_button :size, "S", id: "size_s" %>
+          <%= form.radio_button :size, "S", id: "size_s", required: true %>
           <label for="size_s">S</label>
 
-          <%= form.radio_button :size, "M", id: "size_m" %>
+          <%= form.radio_button :size, "M", id: "size_m", required: true %>
           <label for="size_m">M</label>
 
-          <%= form.radio_button :size, "L", id: "size_l" %>
+          <%= form.radio_button :size, "L", id: "size_l", required: true %>
           <label for="size_l">L</label>
 
-          <%= form.radio_button :size, "XL", id: "size_xl" %>
+          <%= form.radio_button :size, "XL", id: "size_xl", required: true %>
           <label for="size_xl">XL</label>
+
+          <%= form.radio_button :size, "XXL", id: "size_xxl", required: true %>
+          <label for="size_xxl">XXL</label>
         </div>
       </div>
 
       <div class="button-group">
         <%= form.submit 'Confirm Purchase', class: "btn btn-success" %>
         <button class="btn btn-danger" type="button" onclick="closeForm()">Cancel</button>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="overlay" id="delete-overlay" style="display: none;">
+  <div class="Delete_form">
+    <%= form_with url: delete_merch_path, method: :delete, class: "d-flex flex-column", local: true do |form| %>
+      <div>
+        <p>Are you sure you want to delete "<strong id="delete-product-label"></strong>"?</p>
+      </div>
+      <%= form.hidden_field :product_name, id: "delete-product-name" %>
+
+
+      <div class="button-group">
+        <%= form.submit 'Confirm Delete', class: "btn btn-success" %>
+        <button class="btn btn-danger" type="button" onclick="closeDeleteForm()">Cancel</button>
       </div>
     <% end %>
   </div>
@@ -85,12 +110,38 @@
     document.getElementById("overlay").style.display = "none";
     document.body.classList.remove("modal-open");
   }
+
+  function openDeleteForm(productName) {
+    document.getElementById("delete-product-name").value = productName;
+    document.getElementById("delete-product-label").innerText = productName;
+    document.getElementById("delete-overlay").style.display = "flex";
+    document.body.classList.add("modal-open");
+  }
+
+  function closeDeleteForm() {
+    document.getElementById("delete-overlay").style.display = "none";
+    document.body.classList.remove("modal-open");
+  }
 </script>
 
-<!-- CSS for Styling -->
+
 <style>
   /* Overlay (Hidden Initially) */
   .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .delete-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -113,8 +164,23 @@
     width: 350px;
   }
 
+  .Delete_form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 350px;
+  }
+
   /* Product Name Styling */
   .product-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .delete-product-label {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 15px;

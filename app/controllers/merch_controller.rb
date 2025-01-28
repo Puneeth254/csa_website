@@ -21,27 +21,25 @@ class MerchController < ApplicationController
     end
   end
 
-  def purchase
+  def export_sales
     @suppliers = Supplier.all
     @products = Product.all
-    @sales = Sale.includes(:product).all
 
-    @order = Sale.new(purchase_params)
-
-    if @order.save
-      redirect_to merch_path, notice: 'Merch was successfully purchased.'
-    else
-      render :index
-    end
-
-  end
-
-
-  def export_sales
     @sales = Sale.all
     respond_to do |format|
       format.xlsx { render xlsx: "export_sales", filename: "sales_data.xlsx" }
     end
+  end
+
+  def destroy
+    @suppliers = Supplier.all
+    @products = Product.all
+    @sales = Sale.includes(:product).all
+
+    @product = Product.find_by(name: params[:product_name])
+
+    @product&.destroy
+    redirect_to merch_path, notice: "Product deleted successfully."
   end
   
 

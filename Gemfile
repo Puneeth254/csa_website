@@ -61,3 +61,4 @@ end
 gem "devise"
 
 gem "byebug"
+gem "carrierwave", "~> 3.1"

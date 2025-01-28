@@ -19,12 +19,15 @@ Rails.application.routes.draw do
   get "merch" => "merch#index"
   get 'merch/export_sales', to: 'merch#export_sales', as: 'export_sales_merch'
 
+  delete 'merch', to: 'merch#destroy', as: 'delete_merch'
+
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "pages#home"
   resources :events
   resources :cstrophy
-  resources :merch, only: [:index, :new, :create]
+  resources :merch, only: [:index, :create, :destroy]
   resources :sales, only: [:create]
 
   resources :merch do
