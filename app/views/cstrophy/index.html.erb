@@ -1,86 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Events</title>
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
     <style>
-      body {
-        /* background-image: url('https://t4.ftcdn.net/jpg/08/81/17/51/240_F_881175113_IGsJKVJe5lSMggHPDEwMLABC6W7J5Bep.jpg'); */
-        /* background-image: url('cseIITM.jpg'); */
-        background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-position: center top;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      .points-table {
-        width: 60%;
-        margin: 40px auto;
-        border-collapse: separate;
-        border-spacing: 0;
-        text-align: center;
-        border-radius: 10px; /* Rounded corners */
-        overflow: hidden; /* Ensures corners remain rounded */
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-        font-family: 'Poppins', sans-serif; /* Modern font */
-      }
-
-      .points-table th,
-      .points-table td {
-        padding: 15px;
-        /* border: 1px solid #ddd; */
-      }
-
-      .points-table th {
-        background-color: #333;
-        color: white;
-        font-size: 18px;
-      }
-
-      .points-table tr:nth-child(1) {
-        background-color: gold;
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .points-table tr:nth-child(2) {
-        background-color: silver;
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-      .points-table tr:nth-child(3) {
-        background-color: #cd7f32; /* Bronze color */
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .points-table tr:nth-child(n+4) {
-        background-color: #f8f9fa; /* Light grey for remaining rows */
-      }
-
-      /* Highlight effect on hover */
-      .points-table tr:hover {
-        /* background-color: #ffc107; Highlight color */
-        transform: scale(1.1); /* Slight zoom effect */
-        transition: all 0.3s ease-in-out; /* Smooth transition */
-      }
-
-
       /* Carousel Section */
       .carousel {
         width: 90%;
@@ -97,7 +18,21 @@
 
   <body>
 
-    <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+    <% if current_user.username == "csa" %>
+      <div class="flex-row-center-center">
+        <div class="Create_form">
+          <%= form_with url: cstrophy_index_path, method: :post, class: "d-flex", local: true do |form| %>
+            <%= form.text_field :batch_name, placeholder: "Example \"CS21B\" ", class: "form-control", style: "margin-right: 10px;" %>
+            <%= form.text_field :points, placeholder: "Enter points", class: "form-control", style: "margin-right: 10px;" %>
+            <%= form.submit 'Update', class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%
+=begin%>
+ <div id="imageCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img
@@ -139,7 +74,9 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-    </div>
+    </div> 
+<%
+=end%>
 
     <table class="points-table">
       <thead>
@@ -149,26 +86,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Batch Alpha</td>
-          <td>500</td>
-        </tr>
-        <tr>
-          <td>Batch Beta</td>
-          <td>450</td>
-        </tr>
-        <tr>
-          <td>Batch Gamma</td>
-          <td>400</td>
-        </tr>
-        <tr>
-          <td>Batch Delta</td>
-          <td>350</td>
-        </tr>
-        <tr>
-          <td>Batch Epsilon</td>
-          <td>300</td>
-        </tr>
+        <% @batches.each do |batch| %>
+          <tr>
+            <td><%= "Batch #{batch.batch_name}" %></td>
+            <td><%= batch.points %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 

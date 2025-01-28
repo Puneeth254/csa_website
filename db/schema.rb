@@ -22,9 +22,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_25_175534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_type"
+    t.integer "team_size"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "merches", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.decimal "price"
@@ -40,14 +41,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_25_175534) do
     t.string "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_sales_on_product_id"
-  end
-
-  create_table "suppliers", force: :cascade do |t|
-    t.string "name"
-    t.string "contact_info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "ordered_by"
   end
 
   create_table "users", force: :cascade do |t|

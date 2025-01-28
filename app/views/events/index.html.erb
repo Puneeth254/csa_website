@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<div>
 <% if current_user.username == "csa" %>
     <div class="flex-row-center-center">
         <div class="Create_form">
             <%= form_with url: events_path, method: :post, class: "d-flex", local: true do |form| %>
                 <%= form.text_field :event_name, placeholder: "Create new Event", class: "form-control", style: "margin-right: 10px;" %>
+                <%= form.text_field :team_size, placeholder: "Enter Team size", class: "form-control", style: "margin-right: 10px;" %>
                 <%= form.submit 'Create Event', class: "btn btn-success" %>
             <% end %>
         </div>
@@ -15,11 +17,18 @@
     <% @upcoming_events.each do |event| %>
         <div class="event_box flex-column-space-evenly-center">
             <div class="event_name" style="text-decoration: underline">Upcoming events</div>
-                <div class="event_name"><%= event.event_name %></div>
-                <div class="flex-row-space-between-center" style="width:80%;">
-                    <%= link_to "Register", root_path, class: 'btn btn-success' %>
-                    <%= link_to "Participants", root_path, class: 'btn btn-primary' %>
+            <div class="event_name"><%= event.event_name %></div>
+            <div class="event_name">Team size: <%= event.team_size %></div>
+            <% if current_user.username == "csa" %>
+                <div class="flex-row-space-between-center">
+                    <%= button_to "Start Event", start_path(event), method: :post, class: 'btn btn-success', style: 'margin-right: 10px' %>
+                    <%= button_to "Delete Event", event_path(event), method: :delete, class: 'btn btn-danger' %>
                 </div>
+            <% else %>
+                <div class="flex-row-space-evenly-center" style="width:100%;">
+                    <button onclick="showRegistrationForm('<%= event.id %>')" class= 'btn btn-primary'> Register </button>
+                </div>
+            <% end %>
         </div>
     <% end %>
 </div>
@@ -27,21 +36,51 @@
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
 <div class="events_table flex-row-start-center current_events">
-    <div class="event_box flex-column-space-evenly-center">
-        <div class="event_name" style="text-decoration: underline">Ongoing events</div>
-        <div class="event_name">Rock Nite</div>
-        <div class="flex-row-center-center" style="width:80%;">
-            <%= link_to "Participants", root_path, class: 'btn btn-primary' %>
+    <% @ongoing_events.each do |event| %>
+        <div class="event_box flex-column-space-evenly-center">
+            <div class="event_name" style="text-decoration: underline">Ongoing events</div>
+            <div class="event_name"><%= event.event_name %></div>
+            <% if current_user.username == "csa" %>
+                <%= button_to "End Event", end_path(event), method: :post, class: 'btn btn-danger' %>
+            <% end %>
         </div>
-    </div>
+    <% end %>
 </div>
 </div>
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
 <div class="events_table flex-row-start-center completed_events">
-    <div class="event_box flex-column-space-evenly-center">
-        <div class="event_name" style="text-decoration: underline">Completed events</div>
-        <div class="event_name">Rock Nite</div>
+    <% @completed_events.each do |event| %>
+        <div class="event_box flex-column-space-evenly-center">
+            <div class="event_name" style="text-decoration: underline">Completed events</div>
+            <div class="event_name"><%= event.event_name %></div>
+        </div>
+    <% end %>
+</div>
+</div>
+</div>
+
+<div id="form_for_registration" class="center-div flex-row-center-center" style="display: none;">
+    <div class="flex-row-center-center">
+        <div class="Create_form">
+            <p style="font-family:Roboto">Fill the usernames of the team members seperated by "|"</p>
+            <%= form_with url: event_registrations_path, method: :post, class: "d-flex", local: true do |form| %>
+                <%= form.hidden_field :id, id: 'event_id_input' %>
+                <%= form.text_field :team_name, placeholder: "Enter teamname", class: "form-control", style: "margin-right: 10px" %>
+                <%= form.text_field :team_members, placeholder: "P1 | P2 |...", class: "form-control", style: "margin-right: 10px;" %>
+                <%= form.submit 'Register', onclick: "closeRegistrationForm()", class: "btn btn-success" %>
+            <% end %>
+            <button class="btn btn-danger" onclick="closeRegistrationForm()" style="margin-top:10px">Close</button>
+        </div>
     </div>
 </div>
-</div>
+
+<script>
+  function showRegistrationForm(eventId) {
+    document.getElementById('event_id_input').value = eventId; // Set the event ID in the hidden field
+    document.getElementById('form_for_registration').style.display = 'flex'; // Show the form
+  }
+  function closeRegistrationForm() {
+    document.getElementById('form_for_registration').style.display = 'none'; // Show the form
+  }
+</script>
