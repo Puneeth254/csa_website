@@ -39,7 +39,7 @@
         <div class="product-info">
           <img src="<%= product.image%>" alt="<%= product.name %>" class="product-image">
           <h3><%= product.name %></h3>
-          <p><strong>Price:</strong> $<%= product.price %></p>
+          <p><strong>Price:</strong>₹<%= product.price %></p>
           <p><strong>Description:</strong> <%= product.description %></p>
           <p><strong>Customized:</strong> <%= product.is_customized %></p>
           <button class="btn btn-success" onclick="openForm('<%= product.name %>','<%= product.is_customized %>')">Purchase</button>
