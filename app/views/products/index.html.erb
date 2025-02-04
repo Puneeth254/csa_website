@@ -2,34 +2,33 @@
 
 
 <% if current_user.username == "csa" %>
-    <div class="flex-row-center-center">
-        <div class="Create_form">
-            <%= form_with url: merch_path, method: :post, class: "d-flex", local: true do |form| %>
-                <%= form.text_field :name, placeholder: "Name", class: "form-control", style: "margin-right: 10px;", required: true %>
-                <%= form.text_field :price, placeholder: "Price", class: "form-control", style: "margin-right: 10px;", required: true  %>
-                <%= form.text_field :description, placeholder: "Description", class: "form-control", style: "margin-right: 10px;", required: true  %>
-                <%# <%= form.file_field :image, class: "form-control", style: "margin-right: 10px;", required: true  %>
-                <%= form.text_field :image, placeholder: "Image URL", class: "form-control", style: "margin-right: 10px;", required: true %>
-
-                <div class="custom-selection">
-                  <label>Customized:</label>
-                  <div class="custom-options">
-                    <%= form.radio_button :is_customized, "Yes", id: "customized_yes", required: true %>
-                    <label for="customized_s">Yes</label>
-
-                    <%= form.radio_button :is_customized, "No", id: "customized_no", required: true %>
-                    <label for="customized_no">No</label>
-
-                  </div>
-                </div>
-
-                <%= form.submit 'Add Merch', class: "btn btn-success" %>
-            <% end %>
-            
+  <div class="flex-row-center-center wrapp">
+    <div class="Create_form">
+      <%= form_with url: products_path, method: :post, class: "d-flex", local: true do |form| %>
+        <div class="flex-row-space-evenly-center">
+            <%= form.text_field :name, placeholder: "Name", class: "form-control", style: "margin-right: 10px;", required: true %>
+            <%= form.text_field :price, placeholder: "Price", class: "form-control", style: "margin-right: 10px;", required: true  %>
+            <%= form.text_field :description, placeholder: "Description", class: "form-control", style: "margin-right: 10px;", required: true  %>
+            <%# <%= form.file_field :image, class: "form-control", style: "margin-right: 10px;", required: true  %>
+            <%= form.text_field :image, placeholder: "Image URL", class: "form-control", style: "margin-right: 10px;", required: true %>
         </div>
-        <%= link_to 'Sales Data', export_sales_merch_index_path(format: :xlsx), class: 'btn btn-primary', style: 'position: relative; left: 40px; width: 190px' %>
-        
+          <div class="custom-selection flex-row-center-center">
+            <label class="size-title">Customized:</label>
+            <div class="custom-options">
+              <%= form.radio_button :is_customized, "Yes", id: "customized_yes", required: true %>
+              <label for="customized_yes">Yes</label>
+
+              <%= form.radio_button :is_customized, "No", id: "customized_no", required: true %>
+              <label for="customized_no">No</label>
+
+            </div>
+          </div>
+
+          <%= form.submit 'Add Merch', class: "btn btn-success" %>
+      <% end %>
     </div>
+    <%= link_to 'Sales Data', export_sales_products_path(format: :xlsx), class: 'btn btn-primary', style: 'position: relative; left: 40px; width: 190px' %>
+  </div>
 <% end %>
 
 <div class="merch-container">
@@ -101,7 +100,7 @@
 
 <div class="overlay" id="delete-overlay" style="display: none;">
   <div class="Delete_form">
-    <%= form_with url: delete_merch_path, method: :delete, class: "d-flex flex-column", local: true do |form| %>
+    <%= form_with url: delete_products_path, method: :delete, class: "d-flex flex-column", local: true do |form| %>
       <div>
         <p>Are you sure you want to delete "<strong id="delete-product-label"></strong>"?</p>
       </div>

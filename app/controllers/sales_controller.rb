@@ -7,7 +7,7 @@ class SalesController < ApplicationController
 
     # Check if the product exists
     if product.nil?
-      redirect_to merch_path, alert: 'Product not found.'
+      redirect_to products_path, alert: 'Product not found.'
       return
     end
 
@@ -17,7 +17,7 @@ class SalesController < ApplicationController
     @sale.user = current_user
 
     if @sale.save
-      redirect_to merch_path, notice: 'Sale was successfully recorded.'
+      redirect_to products_path, notice: 'Sale was successfully recorded.'
     else
       render :index
     end

@@ -1,4 +1,4 @@
-class MerchController < ApplicationController
+class ProductsController < ApplicationController
   before_action :authenticate_user!
   
   def index
@@ -13,7 +13,7 @@ class MerchController < ApplicationController
     @product = Product.new(product_params)
   
     if @product.save
-      redirect_to merch_path, notice: 'Merch was successfully added.'
+      redirect_to products_path, notice: 'Merch was successfully added.'
     else
       render :index
     end
@@ -35,7 +35,7 @@ class MerchController < ApplicationController
     @product = Product.find_by(name: params[:product_name])
 
     @product&.destroy
-    redirect_to merch_path, notice: "Product deleted successfully."
+    redirect_to products_path, notice: "Product deleted successfully."
   end
   
 

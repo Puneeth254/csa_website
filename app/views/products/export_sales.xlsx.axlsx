@@ -1,4 +1,4 @@
-# app/views/merch/export_sales.xlsx.axlsx
+# app/views/products/export_sales.xlsx.axlsx
 wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Sales Data") do |sheet|

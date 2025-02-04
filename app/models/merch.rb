@@ -1,3 +1,0 @@
-class Merch < ApplicationRecord
-    
-end

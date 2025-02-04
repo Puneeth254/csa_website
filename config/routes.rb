@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  get "cstrophy" => "cstrophy#index"
-  get "feedback" => "pages#feedback"
-  get "home" => "pages#home"
-  get "merch" => "merch#index"
-  get 'merch/export_sales', to: 'merch#export_sales', as: 'export_sales_merch'
+  # get "cstrophy" => "cstrophy#index"
+  # get "feedback" => "pages#feedback"
+  # get "home" => "pages#home"
+  # get "merch" => "merch#index"
+  get 'products/export_sales', to: 'products#export_sales'
 
-  delete 'merch', to: 'merch#destroy', as: 'delete_merch'
+  delete 'products', to: 'products#destroy', as: 'delete_products'
 
 
   # Defines the root path route ("/")
@@ -31,10 +31,10 @@ Rails.application.routes.draw do
   resources :event_registrations
   resources :events
   resources :cstrophy
-  resources :merch, only: [:index, :create, :destroy]
-  resources :sales, only: [:create]
+  resources :products
+  resources :sales
 
-  resources :merch do
+  resources :products do
     collection do
       get :export_sales
     end
