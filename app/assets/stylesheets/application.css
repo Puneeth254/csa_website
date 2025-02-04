@@ -1171,4 +1171,13 @@
     }
   }
   
+  .notice {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+  
+  .notice.hide {
+    opacity: 0;
+  }
+  
   

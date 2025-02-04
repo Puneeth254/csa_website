@@ -62,3 +62,4 @@ gem "devise"
 
 gem "byebug"
 gem "carrierwave", "~> 3.1"
+gem 'rails-assets-bootstrap', '~> 3.3', '>= 3.3.6'
