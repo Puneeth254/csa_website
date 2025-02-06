@@ -1,0 +1,10 @@
+# app/views/products/export_sales.xlsx.axlsx
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Sales Data") do |sheet|
+  sheet.add_row ["Product Name", "Student Name", "Roll Number", "Customized Name", "Size", "Price", "Created At"] # Headers
+
+  @sales.each do |sale|
+    sheet.add_row [sale.product.name, sale.student_name, sale.roll_number, sale.customization_name, sale.size, sale.product.price, sale.created_at]
+  end
+end
