@@ -2,7 +2,7 @@ class PagesController < ApplicationController
     before_action :authenticate_user!, only: :profile
 
     def home
-        
+        @announcements = Announcement.all
     end
 
     def profile

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<div class="flex-row-center-center">
+<div class="flex-row-center-center profile_page_box">
     <div class="profile_box flex-col-center-center" style="font-family:Roboto;">
         <div class="flex-row-center-center details_box">
             <div>
@@ -7,7 +7,7 @@
             </div>
         </div>
         <hr class="border border-secondary border-2 opacity-50">
-        <div class="flex-row-space-evenly-center posessed_details_box">
+        <div class="flex-row-space-evenly-center posessed_details_box" style="flex-wrap: wrap">
             <div class="flex-col-center-center event_details_box">
                 <div><h5 style="text-decoration:underline">Here's your registered events</h5></div>
                 <% if @events_registered.present? %>

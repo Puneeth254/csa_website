@@ -1,5 +1,45 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <body>
+    <div class="announcement-container">
+        <% if current_user.present? && current_user.username == "csa" %>
+            <div class="announcement-form">
+            <%= form_with model: Announcement.new, url: announcements_path, local: true do |form| %>
+                <div class="form-group">
+                <%= form.label :content, "New Announcement:", class: "form-label" %>
+                <%= form.text_area :content, rows: 2, required: true, class: "form-input" %>
+                </div>
+                <div class="form-group">
+                <%= form.submit "Add Announcement", class: "submit-button" %>
+                </div>
+            <% end %>
+            </div>
+        <% end %>
+
+        <!-- Scrollable announcement box -->
+        <div class="announcement-box">
+            <h2 class="announcement-heading">Announcements</h2>
+            <hr>
+            <% if @announcements.present? %>
+                <ul class="announcement-list">
+                    <% @announcements.each do |announcement| %>
+                        <li>
+                            <%= announcement.content %>
+                            <% if current_user.present? && current_user.username == "csa" %>
+                                <%= button_to "Delete", announcement_path(announcement), 
+                                    method: :delete, 
+                                    data: { confirm: "Are you sure?" }, 
+                                    class: "delete-button" %>
+                            <% end %>
+                        </li>
+                    <% end %>
+                </ul>
+            <% else %>
+                <p class="no-announcements">No announcements</p>
+            <% end %>
+        </div>
+
+    </div>
+
     <div class="about-us-box">
         <div class="about-us-content">
           <div class="about-us-text">
@@ -56,7 +96,7 @@
                             <p><i class="fas fa-envelope"></i> cs21b074@smail.iitm.ac.in</p>
                         </div>
                         <div class="team-card">
-                            <img src="/Puneeth.jpg" alt="Person 2">
+                            <img src="/Puneeth1.jpg" alt="Person 2">
                             <h5>Puneeth</h5>
                             <p><i class="fas fa-envelope"></i> cs21b040@smail.iitm.ac.in</p>
                         </div>

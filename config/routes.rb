@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :cstrophy
   resources :products
   resources :sales
+  resources :announcements
 
   resources :products do
     collection do
