@@ -13,7 +13,7 @@
 <% end %>
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
-<div class="events_table flex-row-start-center upcoming_events" style="overflow-x:auto;">
+<div class="events_table flex-row-start-center upcoming_events">
     <% @upcoming_events.each do |event| %>
         <div class="event_box flex-column-space-evenly-center">
             <div class="event_name" style="text-decoration: underline">Upcoming events</div>
@@ -40,6 +40,7 @@
         <div class="event_box flex-column-space-evenly-center">
             <div class="event_name" style="text-decoration: underline">Ongoing events</div>
             <div class="event_name"><%= event.event_name %></div>
+            <div class="event_name">Venue: <%= event.event_name %></div>
             <% if current_user.username == "csa" %>
                 <%= button_to "End Event", end_path(event), method: :post, class: 'btn btn-danger' %>
             <% end %>

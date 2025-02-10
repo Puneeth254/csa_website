@@ -2,7 +2,7 @@
 
 
 <% if current_user.username == "csa" %>
-  <div class="flex-row-center-center wrapp">
+  <div class="flex-row-center-center wrapp" style="margin:0px 75px">
     <div class="Create_form">
       <%= form_with url: products_path, method: :post, class: "d-flex", local: true do |form| %>
         <div class="flex-row-space-evenly-center">

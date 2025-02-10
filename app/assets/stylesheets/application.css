@@ -447,36 +447,38 @@
 }
 
 .events_table{
-    width: max-content;
-    overflow-x: auto;
+    background-color: rgb(5, 5, 5, 0.8);
+    width: 100%;
+    margin: 10px 0px;
     flex-shrink: 0;
-    -ms-overflow-style: none;  /* Internet Explorer and Edge */
-    scrollbar-width: none; 
-    /* animation: scroll 30s linear infinite alternate; */
+    flex-wrap: wrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* .events_container:active .events_table {
-    animation-play-state: paused;
-} */
-
 .page_margin{
-    margin: 120px;
+    margin-top: 120px;
 }
 
 .event_box{
-    color: black;
+    background: rgb(98, 83, 56, 0.9);
+    color: rgb(174, 161, 136);
     padding: 10px;
-    margin: 10px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    margin: 30px;
     height: 200px;
     width: 300px;
+    transform: matrix(1, 0, -0.404026, 1, 0, 0);
     transition: margin 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.event_box div{
+    transform: none;
 }
 
 @media (min-width: 768px){
     .event_box:hover{
-        margin: 0px;
+        background: rgb(98, 83, 56);
+        margin: 20px;
         padding: 18px;
         height: 220px;
         width: 320px;
@@ -489,11 +491,9 @@
     font-weight: 600;
 }
 
-.upcoming_events > *{
-    background: linear-gradient(30deg, #93A5CF, #E4EfE9);
-    background-size: 180% 180%;
-    animation: gradient-animation 7s ease infinite;
-}
+/* .upcoming_events > *{
+    transform: matrix(1, 0, -0.404026, 1, 0, 0);
+} 
 
 .current_events > *{
     background: linear-gradient(30deg, #A1C4FD, #C2E9FB);
@@ -505,7 +505,7 @@
     background: linear-gradient(30deg, #4E65FF, #92EFFD);
     background-size: 180% 180%;
     animation: gradient-animation 7s ease infinite;
-}
+} */
 
 .center-div {
     position: fixed;
