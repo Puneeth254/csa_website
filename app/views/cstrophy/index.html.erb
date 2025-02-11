@@ -14,6 +14,16 @@
         height: 400px;
         object-fit: cover;
       }
+      .batch-row {
+        opacity: 0; /* Start invisible */
+        transform: translateY(50px); /* Move from below */
+        transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+      }
+
+      .batch-row.visible {
+        opacity: 1;
+        transform: translateY(0); /* Moves up to normal position */
+      }
     </style>
   </head>
 
@@ -87,14 +97,26 @@
         </tr>
       </thead>
       <tbody>
-        <% @batches.each do |batch| %>
-          <tr>
+        <% @batches.each_with_index do |batch, index| %>
+          <tr class="batch-row" data-index="<%= index %>">
             <td><%= "Batch #{batch.batch_name}" %></td>
             <td><%= batch.points %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const rows = document.querySelectorAll(".batch-row");
+
+        rows.forEach((row, index) => {
+          setTimeout(() => {
+            row.classList.add("visible");
+          }, index * 100); // 300ms delay per row
+        });
+      });
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

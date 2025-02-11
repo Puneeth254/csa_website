@@ -2,15 +2,10 @@
 <body>
     <div class="announcement-container">
         <% if current_user.present? && current_user.username == "csa" %>
-            <div class="announcement-form">
-            <%= form_with model: Announcement.new, url: announcements_path, local: true do |form| %>
-                <div class="form-group">
-                <%= form.label :content, "New Announcement:", class: "form-label" %>
-                <%= form.text_area :content, rows: 2, required: true, class: "form-input" %>
-                </div>
-                <div class="form-group">
-                <%= form.submit "Add Announcement", class: "submit-button" %>
-                </div>
+            <div class="announcement-form Create_form">
+            <%= form_with model: Announcement.new, url: announcements_path, class: "d-flex", local: true do |form| %>
+                <%= form.text_area :content, placeholder: "New Announcement", required: true, class: "form-control", style: "margin-right: 10px;" %>
+                <%= form.submit "Add Announcement", class: "submit-button btn btn-success",style: "margin: 10px;"  %>
             <% end %>
             </div>
         <% end %>
