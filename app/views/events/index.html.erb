@@ -13,10 +13,10 @@
 <% end %>
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
-<div class="events_table flex-row-start-center upcoming_events" style="overflow-x:auto;">
+<div class="events_table flex-row-center-center upcoming_events" style="overflow-x:auto;">
     <% @upcoming_events.each do |event| %>
         <div class="event_box flex-column-space-evenly-center">
-            <div class="event_name" style="text-decoration: underline">Upcoming events</div>
+            <div class="event_name" style="text-decoration: underline">Upcoming event</div>
             <div class="event_name"><%= event.event_name %></div>
             <div class="event_name">Team size: <%= event.team_size %></div>
             <% if current_user.username == "csa" %>
@@ -35,10 +35,10 @@
 </div>
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
-<div class="events_table flex-row-start-center current_events">
+<div class="events_table flex-row-center-center current_events">
     <% @ongoing_events.each do |event| %>
         <div class="event_box flex-column-space-evenly-center">
-            <div class="event_name" style="text-decoration: underline">Ongoing events</div>
+            <div class="event_name" style="text-decoration: underline">Ongoing event</div>
             <div class="event_name"><%= event.event_name %></div>
             <% if current_user.username == "csa" %>
                 <%= button_to "End Event", end_path(event), method: :post, class: 'btn btn-danger' %>
@@ -49,10 +49,10 @@
 </div>
 
 <div class="events_container flex-row-start-center" style="overflow-x: auto;">
-<div class="events_table flex-row-start-center completed_events">
+<div class="events_table flex-row-center-center completed_events">
     <% @completed_events.each do |event| %>
         <div class="event_box flex-column-space-evenly-center">
-            <div class="event_name" style="text-decoration: underline">Completed events</div>
+            <div class="event_name" style="text-decoration: underline">Completed event</div>
             <div class="event_name"><%= event.event_name %></div>
         </div>
     <% end %>
@@ -63,7 +63,8 @@
 <div id="form_for_registration" class="center-div flex-row-center-center" style="display: none;">
     <div class="flex-row-center-center">
         <div class="Create_form">
-            <p style="font-family:Roboto">Fill the usernames of the team members seperated by "|"</p>
+            <p style="font-family:Roboto; font-size: 20px;">Fill the rollnumbers of the team members seperated by "|"</p>
+            <p style="font-family:Roboto; font-size: 20px;">Indicate foreign players as F1|F2|..</p>
             <%= form_with url: event_registrations_path, method: :post, class: "d-flex", local: true do |form| %>
                 <%= form.hidden_field :id, id: 'event_id_input' %>
                 <%= form.text_field :team_name, placeholder: "Enter teamname", class: "form-control", style: "margin-right: 10px" %>
@@ -83,4 +84,24 @@
   function closeRegistrationForm() {
     document.getElementById('form_for_registration').style.display = 'none'; // Show the form
   }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const eventBoxes = document.querySelectorAll(".event_box");
+  let visibleCount = 0; // Start with no events visible
+
+  function revealNextEvent() {
+    if (visibleCount < eventBoxes.length) {
+      const box = eventBoxes[visibleCount];
+      box.classList.add("visible"); // Add class to trigger slide-in
+
+      visibleCount++;
+      setTimeout(revealNextEvent, 100);// Adjust delay time as needed
+    }
+  }
+
+  // Start revealing events with a delay
+  setTimeout(revealNextEvent, 100);
+});
 </script>
